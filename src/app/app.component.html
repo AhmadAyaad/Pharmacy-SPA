@@ -1,28 +1,44 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/home">Dating App</a>
 
-<button class="btn-primary" (click)="bla()">
- ayad
-</button>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/medicine">Matches </a>
+        </li>
 
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/lists">Lists</a>
+        </li>
 
-<div class="container">
-    <div class="row">
-      <div class="col-sm">
-        One of one columns
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/messages">Messages</a>
+        </li>
+      </ul>
+
+      <!-- <div class="dropdown" appDropdown #r="appDropdown">
+
+        <img class="mr-1"
+        src="{{photoUrl || '../../../../assets/16.1 user.png.png' }}"
+        />
+        <a class="dropdown-toggle text-light">
+          welcome {{ loginService.decodedToken?.unique_name | titlecase }}
+        </a>
+
+        <div class="dropdown-menu mt-3" [ngClass]="{ show: r.isOpen }">
+          <a class="dropdown-item" routerLink="/member/edit"
+            ><i class="fa fa-user"></i>Edit Profile</a
+          >
+          <div class="dropdown-divider" href="#"></div>
+          <a class="dropdown-item" (click)="logout()"
+            ><i class="fa fa-sign-out"></i>Logout</a
+          >
+        </div>
       </div>
-      <div class="col-sm">
-        One of two columns
-      </div>
-      <div class="col-sm">
-        One of three columns
-      </div>
+       -->
     </div>
   </div>
+</nav>
 
-  <ul class="list-group">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
-  <p>ahmad ayad</p>
+<p>ahmad ayad</p>
