@@ -1,17 +1,144 @@
-<p>create-medicine-component works!</p>
-<form>
+<div>
+  <form [formGroup]="medicineForm" (ngSubmit)="createMedicine()">
     <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      <label for="medicineInputCode">كود الدواء</label>
+      <input
+        formControlName="medicineCode"
+        type="text"
+        class="form-control w-25"
+        id="medicineInputCode"
+        placeholder="من فضلك أدخل كود الدواء"
+        [ngClass]="{
+          'is-invalid':
+            (medicineForm.get('medicineCode').errors &&
+              medicineForm.get('medicineCode').touched) ||
+            (submitted && medicineForm.get('medicineCode').errors)
+        }"
+      />
+
+      <div
+        class="font-weight-bold h1 invalid-feedback"
+        style="padding-right: 200px; font-size: 24px"
+      >
+        كود الدواء مطلوب
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="medicineInputName" class="font-weight-bold h3"
+        >إسم الدواء</label
+      >
+      <input
+        formControlName="medicineName"
+        type="text"
+        class="form-control w-25"
+        id="medicineInputName"
+        placeholder="من فضلك أدخل إسم الدواء"
+        [ngClass]="{
+          'is-invalid':
+            (medicineForm.get('medicineName').errors &&
+              medicineForm.get('medicineName').touched) ||
+            (submitted && medicineForm.get('medicineName').errors)
+        }"
+      />
+
+      <div class="invalid-feedback font-weight-bold h1">إسم الدواء مطلوب</div>
+
+      <!-- <div
+        style="color: red"
+        *ngIf="
+          (medicineForm.get('medicineName').hasError('required') &&
+            medicineForm.get('medicineName').touched) ||
+          (submitted && medicineForm.get('medicineName').hasError('required'))
+        "
+      >
+        إسم الدواء مطلوب
+      </div> -->
+
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          medicineForm.get('medicineName').hasError('minlength') &&
+          medicineForm.get('medicineName').touched
+        "
+      >
+        إسم الدواء يجب أن لا يقل عن اربع حروف
+      </div>
+
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          medicineForm.get('medicineName').hasError('maxlength') &&
+          medicineForm.get('medicineName').touched
+        "
+      >
+        إسم الدواء يجب أن لا يزيد عن 8 حروف
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="medicineInputPrice">سعر الدواء</label>
+      <input
+        formControlName="sellingPrice"
+        type="number"
+        class="form-control w-25"
+        id="medicineInputPrice"
+        placeholder="من فضلك أدخل إسم الدواء"
+        [ngClass]="{
+          'is-invalid':
+            (medicineForm.get('sellingPrice').errors &&
+              medicineForm.get('sellingPrice').touched) ||
+            (submitted && medicineForm.get('sellingPrice').errors)
+        }"
+      />
+      <div class="invalid-feedback">سعر الدواء مطلوب</div>
+    </div>
+
+    <div class="form-group">
+      <label for="medicineInputExpDate">تاريخ إنتهاء صلاحية الدواء </label>
+      <input
+        formControlName="expireDate"
+        type="date"
+        class="form-control w-25"
+        id="medicineInputExpDate"
+        placeholder="من فضلك أدخل إسم الدواء"
+        [ngClass]="{
+          'is-invalid':
+            (medicineForm.get('expireDate').errors &&
+              medicineForm.get('expireDate').touched) ||
+            (submitted && medicineForm.get('expireDate').errors)
+        }"
+      />
+      <div class="invalid-feedback">تاريخ إنتهاء الصلاحية مطلوب</div>
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      <label for="units">الوحدة</label>
+      <select formControlName="unitId" class="form-control w-25" id="units">
+        <option
+          *ngFor="let order of orders; let i = index"
+          [ngClass]="{
+            'is-invalid': submitted && medicineForm.get('unitId').errors
+          }"
+          [value]="orders[i].unitId"
+        >
+          {{ orders[i].unitName }}
+        </option>
+      </select>
+
+      <div
+        style="background-color: red"
+        *ngIf="submitted && medicineForm.get('unitId').errors"
+      >
+        من فضلك اختر وحدة للدواء
+      </div>
+
+      <!-- <div class="invalid-feedback" *ngIf="medicineForm.get('unitId').errors">
+        <div *ngIf="medicineForm.get('unitId').errors.required">
+          Access Name is required
+        </div>
+      </div> -->
     </div>
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <button class="btn btn-success mt-5" type="submit">Register</button>
   </form>
+</div>
