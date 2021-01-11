@@ -8,4 +8,17 @@ export class MedicineService {
   createMedicine(medicine) {
     return this.http.post('http://localhost:53147/api/medicine/', medicine);
   }
+  uploadFile(file) {
+    return this.http.post('http://localhost:53147/api/Medicine/upload', file);
+  }
+
+  addUploadedMedicinestoDb(medicines:any) {
+    return this.http.post(
+      'http://localhost:53147/api/Medicine/addToDb',
+      medicines
+    );
+  }
+  getMedicines() {
+    return this.http.get('http://localhost:53147/api/Medicine');
+  }
 }

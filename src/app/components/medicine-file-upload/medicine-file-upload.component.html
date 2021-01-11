@@ -1,0 +1,14 @@
+<p>medicine-file-upload works!</p>
+
+<form (ngSubmit)="saveUploadedMedicinesToDb()">
+  <div class="form-group">
+    <label for="file">Choose File</label>
+    <input
+      type="file"
+      id="file"
+      (change)="handleFileInput($event.target.files)"
+    />
+
+    <button type="submit">save</button>
+  </div>
+</form>

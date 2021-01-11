@@ -115,13 +115,13 @@
       <label for="units">الوحدة</label>
       <select formControlName="unitId" class="form-control w-25" id="units">
         <option
-          *ngFor="let order of orders; let i = index"
+          *ngFor="let unit of units; let i = index"
           [ngClass]="{
             'is-invalid': submitted && medicineForm.get('unitId').errors
           }"
-          [value]="orders[i].unitId"
+          [value]="units[i].unitId"
         >
-          {{ orders[i].unitName }}
+          {{ units[i].unitName }}
         </option>
       </select>
 
@@ -131,14 +131,8 @@
       >
         من فضلك اختر وحدة للدواء
       </div>
-
-      <!-- <div class="invalid-feedback" *ngIf="medicineForm.get('unitId').errors">
-        <div *ngIf="medicineForm.get('unitId').errors.required">
-          Access Name is required
-        </div>
-      </div> -->
     </div>
 
-    <button class="btn btn-success mt-5" type="submit">Register</button>
+    <button class="btn btn-success mt-5" type="submit">حفظ</button>
   </form>
 </div>

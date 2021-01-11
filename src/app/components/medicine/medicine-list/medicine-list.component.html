@@ -1,0 +1,36 @@
+<input
+  class="mb-3 form-control w-25"
+  type="text"
+  placeholder="بحث بإسم الدواء"
+  [(ngModel)]="medicineName"
+  (ngModelChange)="search()"
+/>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th [appSort]="medicines" data-order="desc" data-name="medicineName">
+        إسم الدواء<i class="fa fa-sort"></i>
+      </th>
+      <th [appSort]="medicines" data-order="desc" data-name="medicineCode">
+        كود الدواء
+      </th>
+      <th [appSort]="medicines" data-order="desc" data-name="expireDate">
+        تاريخ إنتهاء الصلاحية
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="
+        let medicine of medicines
+          | paginate: { itemsPerPage: 10, currentPage: pageNumber }
+      "
+    >
+      <th scope="row">{{ medicine.medicineName }}</th>
+      <td>{{ medicine.medicineCode }}</td>
+      <td>{{ medicine.expireDate }}</td>
+    </tr>
+  </tbody>
+
+  <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
+</table>

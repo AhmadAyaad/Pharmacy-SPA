@@ -18,7 +18,7 @@ export class CreateMedicineComponentComponent implements OnInit {
   medicine: IMedicineDTO;
   medicineForm: FormGroup;
   submitted = false;
-  orders: any[];
+  units: any[];
   constructor(
     private formBuilder: FormBuilder,
     private unitService: UnitService,
@@ -29,8 +29,8 @@ export class CreateMedicineComponentComponent implements OnInit {
     this.createMedicineForm();
     this.unitService.getUnits().subscribe((res: any) => {
       console.log(res);
-      this.orders = res;
-      console.log(this.orders);
+      this.units = res;
+      console.log(this.units);
     });
   }
   get formControls() {
