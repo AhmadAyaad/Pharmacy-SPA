@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MedicineService } from 'src/app/_services/medicine.service.service';
+import { faSort } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-medicine-list',
@@ -7,9 +8,10 @@ import { MedicineService } from 'src/app/_services/medicine.service.service';
   styleUrls: ['./medicine-list.component.css'],
 })
 export class MedicineListComponent implements OnInit, OnDestroy {
+  faSort = faSort;
   constructor(private medicineService: MedicineService) {}
   medicines;
-  medicineName;
+  medicineName: string;
   subscriber;
   pageNumber: number = 1;
   ngOnInit(): void {

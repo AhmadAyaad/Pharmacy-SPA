@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IMedicineDTO } from 'src/app/Dtos/IMedicineDTO';
+import { AlertifyService } from 'src/app/_services/alertify.service';
 import { MedicineService } from 'src/app/_services/medicine.service.service';
 import { UnitService } from 'src/app/_services/unit.service';
 
@@ -20,9 +17,10 @@ export class CreateMedicineComponentComponent implements OnInit {
   submitted = false;
   units: any[];
   constructor(
-    private formBuilder: FormBuilder,
     private unitService: UnitService,
-    private medicineService: MedicineService
+    private medicineService: MedicineService,
+    private router: Router,
+    private alertifyService: AlertifyService
   ) {}
 
   ngOnInit(): void {
@@ -39,31 +37,36 @@ export class CreateMedicineComponentComponent implements OnInit {
   createMedicineForm() {
     this.medicineForm = new FormGroup({
       medicineCode: new FormControl('', Validators.required),
+      nationalCode: new FormControl('', Validators.required),
+      productType: new FormControl('Medicine'),
       medicineName: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(8),
       ]),
       sellingPrice: new FormControl('', Validators.required),
-      expireDate: new FormControl('', Validators.required),
       unitId: new FormControl('', Validators.required),
     });
   }
 
   createMedicine() {
     this.submitted = true;
+    console.log(this.alertifyService);
+    this.alertifyService.success('elhamdollah');
     if (this.medicineForm.valid) {
       this.medicine = Object.assign({}, this.medicineForm.value);
-
+      console.log(this.medicine);
       this.medicineService.createMedicine(this.medicine).subscribe(
         (res) => {
+          this.alertifyService.success('تم إضافة منتج جديد بنجاح');
+          this.router.navigate(['/medicines']);
           console.log(res);
         },
         (err) => {
           console.log(err);
+          this.alertifyService.error(err);
         }
       );
     }
-    console.log('hna erroooooooooooooooooooooor');
   }
 }

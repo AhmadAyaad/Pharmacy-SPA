@@ -1,13 +1,13 @@
 <div>
   <form [formGroup]="medicineForm" (ngSubmit)="createMedicine()">
     <div class="form-group">
-      <label for="medicineInputCode">كود الدواء</label>
+      <label for="medicineInputCode">الكود المحلى</label>
       <input
         formControlName="medicineCode"
         type="text"
         class="form-control w-25"
         id="medicineInputCode"
-        placeholder="من فضلك أدخل كود الدواء"
+        placeholder="من فضلك أدخل الكود المحلى"
         [ngClass]="{
           'is-invalid':
             (medicineForm.get('medicineCode').errors &&
@@ -20,10 +20,32 @@
         class="font-weight-bold h1 invalid-feedback"
         style="padding-right: 200px; font-size: 24px"
       >
-        كود الدواء مطلوب
+        الكود المحلى مطلوب
       </div>
     </div>
+    <div class="form-group">
+      <label for="nationalInputCode">الكود الدولى</label>
+      <input
+        formControlName="nationalCode"
+        type="text"
+        class="form-control w-25"
+        id="nationalInputCode"
+        placeholder="من فضلك أدخل الكود الدولى"
+        [ngClass]="{
+          'is-invalid':
+            (medicineForm.get('nationalCode').errors &&
+              medicineForm.get('nationalCode').touched) ||
+            (submitted && medicineForm.get('nationalCode').errors)
+        }"
+      />
 
+      <div
+        class="font-weight-bold h1 invalid-feedback"
+        style="padding-right: 200px; font-size: 24px"
+      >
+        الكود الدولى مطلوب
+      </div>
+    </div>
     <div class="form-group">
       <label for="medicineInputName" class="font-weight-bold h3"
         >إسم الدواء</label
@@ -42,7 +64,15 @@
         }"
       />
 
-      <div class="invalid-feedback font-weight-bold h1">إسم الدواء مطلوب</div>
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          medicineForm.get('medicineName').hasError('required') &&
+          medicineForm.get('medicineName').touched
+        "
+      >
+        إسم الدواء مطلو
+      </div>
 
       <!-- <div
         style="color: red"
@@ -54,6 +84,26 @@
       >
         إسم الدواء مطلوب
       </div> -->
+      <div class="form-group mt-4">
+        <label class="control-label font-weight-bold" style="margin-left: 45px"
+          >نوع المنتج</label
+        >
+        <label class="radio-inline ml-2">
+          <input
+            type="radio"
+            value="Medicine"
+            formControlName="productType"
+          />دواء
+        </label>
+
+        <label class="radio-inline ml-5">
+          <input
+            type="radio"
+            value="Equipment"
+            formControlName="productType"
+          />مستلزم طبى
+        </label>
+      </div>
 
       <div
         class="invalid-feedback"
@@ -94,7 +144,7 @@
       <div class="invalid-feedback">سعر الدواء مطلوب</div>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="medicineInputExpDate">تاريخ إنتهاء صلاحية الدواء </label>
       <input
         formControlName="expireDate"
@@ -110,7 +160,7 @@
         }"
       />
       <div class="invalid-feedback">تاريخ إنتهاء الصلاحية مطلوب</div>
-    </div>
+    </div> -->
     <div class="form-group">
       <label for="units">الوحدة</label>
       <select formControlName="unitId" class="form-control w-25" id="units">
@@ -136,3 +186,5 @@
     <button class="btn btn-success mt-5" type="submit">حفظ</button>
   </form>
 </div>
+<p>{{ medicineForm.value | json }}</p>
+<p>{{ medicineForm.status | json }}</p>

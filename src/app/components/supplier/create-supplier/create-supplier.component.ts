@@ -1,10 +1,6 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ISupplierDto } from 'src/app/Dtos/ISupplierDto';
 import { SupplierService } from 'src/app/_services/supplier.service';
 
@@ -17,10 +13,7 @@ export class CreateSupplierComponent implements OnInit {
   supplier: ISupplierDto;
   supplierForm: FormGroup;
   submitted = false;
-  constructor(
-    private formBuilder: FormBuilder,
-    private supplierSerivce: SupplierService
-  ) {}
+  constructor(private supplierSerivce: SupplierService) {}
 
   ngOnInit(): void {
     this.createSupplierForm();
@@ -52,6 +45,5 @@ export class CreateSupplierComponent implements OnInit {
         }
       );
     }
-    console.log('hna erroooooooooooooooooooooor');
   }
 }

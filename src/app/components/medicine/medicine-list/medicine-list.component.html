@@ -5,17 +5,20 @@
   [(ngModel)]="medicineName"
   (ngModelChange)="search()"
 />
+<div></div>
+
 <table class="table">
   <thead class="thead-dark">
     <tr>
       <th [appSort]="medicines" data-order="desc" data-name="medicineName">
-        إسم الدواء<i class="fa fa-sort"></i>
+        <fa-icon [icon]="faSort"></fa-icon> إسم الدواء
       </th>
       <th [appSort]="medicines" data-order="desc" data-name="medicineCode">
+        <fa-icon [icon]="faSort"></fa-icon>
         كود الدواء
       </th>
       <th [appSort]="medicines" data-order="desc" data-name="expireDate">
-        تاريخ إنتهاء الصلاحية
+        <fa-icon [icon]="faSort"></fa-icon>تاريخ إنتهاء الصلاحية
       </th>
     </tr>
   </thead>
@@ -23,7 +26,7 @@
     <tr
       *ngFor="
         let medicine of medicines
-          | paginate: { itemsPerPage: 10, currentPage: pageNumber }
+          | paginate: { itemsPerPage: 15, currentPage: pageNumber }
       "
     >
       <th scope="row">{{ medicine.medicineName }}</th>
