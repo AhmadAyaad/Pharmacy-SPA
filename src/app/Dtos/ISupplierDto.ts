@@ -1,5 +1,6 @@
 export interface ISupplierDto {
-    supplierName: string;
-    address: string;
-    phone: Number;
+  supplierId: Number;
+  supplierName: string;
+  address: string;
+  phone: Number;
 }

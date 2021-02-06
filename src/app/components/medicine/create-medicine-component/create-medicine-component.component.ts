@@ -26,14 +26,10 @@ export class CreateMedicineComponentComponent implements OnInit {
   ngOnInit(): void {
     this.createMedicineForm();
     this.unitService.getUnits().subscribe((res: any) => {
-      console.log(res);
       this.units = res;
-      console.log(this.units);
     });
   }
-  get formControls() {
-    return this.medicineForm.controls;
-  }
+
   createMedicineForm() {
     this.medicineForm = new FormGroup({
       medicineCode: new FormControl('', Validators.required),
@@ -51,16 +47,12 @@ export class CreateMedicineComponentComponent implements OnInit {
 
   createMedicine() {
     this.submitted = true;
-    console.log(this.alertifyService);
-    this.alertifyService.success('elhamdollah');
     if (this.medicineForm.valid) {
       this.medicine = Object.assign({}, this.medicineForm.value);
-      console.log(this.medicine);
       this.medicineService.createMedicine(this.medicine).subscribe(
         (res) => {
           this.alertifyService.success('تم إضافة منتج جديد بنجاح');
           this.router.navigate(['/medicines']);
-          console.log(res);
         },
         (err) => {
           console.log(err);

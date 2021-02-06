@@ -23,6 +23,7 @@
         الكود المحلى مطلوب
       </div>
     </div>
+
     <div class="form-group">
       <label for="nationalInputCode">الكود الدولى</label>
       <input
@@ -46,6 +47,7 @@
         الكود الدولى مطلوب
       </div>
     </div>
+
     <div class="form-group">
       <label for="medicineInputName" class="font-weight-bold h3"
         >إسم الدواء</label
@@ -73,38 +75,6 @@
       >
         إسم الدواء مطلو
       </div>
-
-      <!-- <div
-        style="color: red"
-        *ngIf="
-          (medicineForm.get('medicineName').hasError('required') &&
-            medicineForm.get('medicineName').touched) ||
-          (submitted && medicineForm.get('medicineName').hasError('required'))
-        "
-      >
-        إسم الدواء مطلوب
-      </div> -->
-      <div class="form-group mt-4">
-        <label class="control-label font-weight-bold" style="margin-left: 45px"
-          >نوع المنتج</label
-        >
-        <label class="radio-inline ml-2">
-          <input
-            type="radio"
-            value="Medicine"
-            formControlName="productType"
-          />دواء
-        </label>
-
-        <label class="radio-inline ml-5">
-          <input
-            type="radio"
-            value="Equipment"
-            formControlName="productType"
-          />مستلزم طبى
-        </label>
-      </div>
-
       <div
         class="invalid-feedback"
         *ngIf="
@@ -124,6 +94,27 @@
       >
         إسم الدواء يجب أن لا يزيد عن 8 حروف
       </div>
+    </div>
+
+    <div class="form-group mt-4">
+      <label class="control-label font-weight-bold" style="margin-left: 45px"
+        >نوع المنتج</label
+      >
+      <label class="radio-inline ml-2">
+        <input
+          type="radio"
+          value="Medicine"
+          formControlName="productType"
+        />دواء
+      </label>
+
+      <label class="radio-inline ml-5">
+        <input
+          type="radio"
+          value="Equipment"
+          formControlName="productType"
+        />مستلزم طبى
+      </label>
     </div>
 
     <div class="form-group">

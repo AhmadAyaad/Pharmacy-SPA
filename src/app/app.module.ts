@@ -19,6 +19,8 @@ import { MedicineListComponent } from './components/medicine/medicine-list/medic
 import { SortDirective } from './directive/sort.directive';
 import { AlertifyService } from './_services/alertify.service';
 import { SuppliersListComponent } from './components/supplier/suppliers-list/suppliers-list.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { RecieveProductFromSupplierComponent } from './components/recieve-product-from-supplier/recieve-product-from-supplier.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { SuppliersListComponent } from './components/supplier/suppliers-list/sup
     MedicineListComponent,
     SortDirective,
     SuppliersListComponent,
+    NavbarComponent,
+    RecieveProductFromSupplierComponent,
   ],
   imports: [
     BrowserModule,
