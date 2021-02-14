@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MedicineService } from 'src/app/_services/medicine.service.service';
 import { faSort } from '@fortawesome/free-solid-svg-icons';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-medicine-list',
@@ -12,7 +13,7 @@ export class MedicineListComponent implements OnInit, OnDestroy {
   constructor(private medicineService: MedicineService) {}
   medicines;
   medicineName: string;
-  subscriber;
+  subscriber: Subscription;
   pageNumber: number = 1;
   ngOnInit(): void {
     this.subscriber = this.medicineService.getMedicines().subscribe((res) => {

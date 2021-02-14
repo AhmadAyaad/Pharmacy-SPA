@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { IMedicine } from '../_models/IMedicine';
 @Injectable()
 export class MedicineService {
   constructor(private http: HttpClient) {}
@@ -20,5 +21,8 @@ export class MedicineService {
   }
   getMedicines() {
     return this.http.get(`${environment.apiUrl}medicine`);
+  }
+  getMedicinesWithUnitNames() {
+    return this.http.get<IMedicine[]>(`${environment.apiUrl}medicine/units`);
   }
 }

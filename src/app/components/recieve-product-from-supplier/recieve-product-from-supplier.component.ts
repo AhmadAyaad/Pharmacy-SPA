@@ -7,6 +7,7 @@ import { IPharmacy } from 'src/app/_models/IPharmacy';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { MedicineService } from 'src/app/_services/medicine.service.service';
 import { PharmacyService } from 'src/app/_services/pharmacy.service';
+import { ProductSupplierService } from 'src/app/_services/product-supplier.service';
 import { SupplierService } from 'src/app/_services/supplier.service';
 
 @Component({
@@ -26,6 +27,7 @@ export class RecieveProductFromSupplierComponent implements OnInit {
     private supplierService: SupplierService,
     private productService: MedicineService,
     private pharmacyService: PharmacyService,
+    private productSupplierService: ProductSupplierService,
     private alertifyService: AlertifyService
   ) {}
 
@@ -48,9 +50,11 @@ export class RecieveProductFromSupplierComponent implements OnInit {
   }
 
   getProducts() {
-    this.productService.getMedicines().subscribe((res: IMedicine[]) => {
-      this.products = res;
-    });
+    this.productService
+      .getMedicinesWithUnitNames()
+      .subscribe((res: IMedicine[]) => {
+        this.products = res;
+      });
   }
 
   getLargePharmacies() {
@@ -80,5 +84,22 @@ export class RecieveProductFromSupplierComponent implements OnInit {
 
   recieveProductFromSupplier() {
     this.submitted = true;
+    if (this.productFromSupplierForm.valid) {
+      this.productSupplier = Object.assign(
+        {},
+        this.productFromSupplierForm.value
+      );
+
+      this.productSupplierService
+        .createNewTransferOperation(this.productSupplier)
+        .subscribe(
+          (res) => {
+            console.log(res);
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+    }
   }
 }

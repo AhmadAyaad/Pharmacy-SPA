@@ -21,10 +21,13 @@ import { AlertifyService } from './_services/alertify.service';
 import { SuppliersListComponent } from './components/supplier/suppliers-list/suppliers-list.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RecieveProductFromSupplierComponent } from './components/recieve-product-from-supplier/recieve-product-from-supplier.component';
+import { PharmacyProductsListComponent } from './components/pharmacy/pharmacy-products-list/pharmacy-products-list.component';
+import { DropdownDirective } from './directive/dropdown.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
+    DropdownDirective,
     CreateMedicineComponentComponent,
     MedicineFileUploadComponent,
     CreateSupplierComponent,
@@ -33,6 +36,7 @@ import { RecieveProductFromSupplierComponent } from './components/recieve-produc
     SuppliersListComponent,
     NavbarComponent,
     RecieveProductFromSupplierComponent,
+    PharmacyProductsListComponent,
   ],
   imports: [
     BrowserModule,
