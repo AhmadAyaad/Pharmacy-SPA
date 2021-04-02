@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { routes } from './routes';
 import { AppComponent } from './app.component';
@@ -23,6 +25,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RecieveProductFromSupplierComponent } from './components/recieve-product-from-supplier/recieve-product-from-supplier.component';
 import { PharmacyProductsListComponent } from './components/pharmacy/pharmacy-products-list/pharmacy-products-list.component';
 import { DropdownDirective } from './directive/dropdown.directive';
+import { ProductItemsModalComponent } from './components/recieve-product-from-supplier/product-items-modal/product-items-modal.component';
+import { ProductSupplierService } from './_services/product-supplier.service';
+import { PharmacyProductTransferComponent } from './components/pharmacy/pharmacy-product-transfer/pharmacy-product-transfer.component';
+import { PharmacyTransferItemsModalComponent } from './components/pharmacy/pharmacy-transfer-items-modal/pharmacy-transfer-items-modal.component';
+import { ProductDetailComponent } from './components/pharmacy/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +44,10 @@ import { DropdownDirective } from './directive/dropdown.directive';
     NavbarComponent,
     RecieveProductFromSupplierComponent,
     PharmacyProductsListComponent,
+    ProductItemsModalComponent,
+    PharmacyProductTransferComponent,
+    PharmacyTransferItemsModalComponent,
+    ProductDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,8 +57,21 @@ import { DropdownDirective } from './directive/dropdown.directive';
     ReactiveFormsModule,
     NgxPaginationModule,
     FontAwesomeModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
   ],
-  providers: [MedicineService, UnitService, SupplierService, AlertifyService],
+  entryComponents: [
+    ProductItemsModalComponent,
+    PharmacyTransferItemsModalComponent,
+  ],
+
+  providers: [
+    MedicineService,
+    UnitService,
+    SupplierService,
+    AlertifyService,
+    ProductSupplierService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

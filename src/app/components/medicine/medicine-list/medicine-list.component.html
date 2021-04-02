@@ -26,14 +26,19 @@
     <tr
       *ngFor="
         let medicine of medicines
-          | paginate: { itemsPerPage: 15, currentPage: pageNumber }
+          | paginate
+            : {
+                itemsPerPage: 10,
+                currentPage: this.page,
+                totalItems: totalPages
+              }
       "
     >
-      <th scope="row">{{ medicine.medicineName }}</th>
-      <td>{{ medicine.medicineCode }}</td>
-      <td>{{ medicine.expireDate }}</td>
+      <th>{{ medicine.medicineName }}</th>
+      <th>{{ medicine.medicineCode }}</th>
+      <th>{{ medicine.expireDate }}</th>
     </tr>
   </tbody>
 
-  <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
+  <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
 </table>

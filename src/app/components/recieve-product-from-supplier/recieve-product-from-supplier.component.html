@@ -1,280 +1,287 @@
-<div>
+<div class="m-4 p-4">
   <form
     [formGroup]="productFromSupplierForm"
     (ngSubmit)="recieveProductFromSupplier()"
   >
-    <div class="form-group">
-      <label for="importOrderNumberInput">رقم أمر التوريد</label>
-      <input
-        formControlName="importOrderNumber"
-        type="number"
-        class="form-control w-25"
-        id="importOrderNumberInput"
-        placeholder="من فضلك رقم أمر التوريد"
-        [ngClass]="{
-          'is-invalid':
-            (productFromSupplierForm.get('importOrderNumber').errors &&
-              productFromSupplierForm.get('importOrderNumber').touched) ||
-            (submitted &&
-              productFromSupplierForm.get('importOrderNumber').errors)
-        }"
-      />
+    <div class="row mt-5">
+      <div class="col-6">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-2 mt-1">
+              <label
+                for="importOrderNumberInput"
+                class="font-weight-bold"
+                style="font-size: large"
+                >رقم أمر التوريد</label
+              >
+            </div>
+            <div class="col-9">
+              <div class="input-group" style="width: 50%">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">#</div>
+                </div>
+                <input
+                  formControlName="importOrderNumber"
+                  type="number"
+                  class="form-control w-50"
+                  id="importOrderNumberInput"
+                  placeholder="من فضلك رقم أمر التوريد"
+                  [ngClass]="{
+                    'is-invalid':
+                      (productFromSupplierForm.get('importOrderNumber')
+                        .errors &&
+                        productFromSupplierForm.get('importOrderNumber')
+                          .touched) ||
+                      (submitted &&
+                        productFromSupplierForm.get('importOrderNumber').errors)
+                  }"
+                />
+                <div
+                  class="invalid-feedback font-weight-bold h1"
+                  style="font-size: 18px"
+                >
+                  رقم أمر التوريد مطلوب
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-2 mt-1">
+              <label
+                for="supplyOrderNumberInput"
+                class="font-weight-bold"
+                style="font-size: large"
+                >رقم أمر الإمداد</label
+              >
+            </div>
+            <div class="col-9">
+              <div class="input-group" style="width: 50%">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">#</div>
+                </div>
+                <input
+                  formControlName="supplyOrderNumber"
+                  type="number"
+                  class="form-control w-50"
+                  id="supplyOrderNumberInput"
+                  placeholder="من فضلك أدخل رقم أمر الإمداد"
+                  [ngClass]="{
+                    'is-invalid':
+                      (productFromSupplierForm.get('supplyOrderNumber')
+                        .errors &&
+                        productFromSupplierForm.get('supplyOrderNumber')
+                          .touched) ||
+                      (submitted &&
+                        productFromSupplierForm.get('supplyOrderNumber').errors)
+                  }"
+                />
 
-      <div
-        class="font-weight-bold h1 invalid-feedback"
-        style="padding-right: 200px; font-size: 24px"
-      >
-        رقم أمر التوريد مطلوب
+                <div
+                  class="invalid-feedback font-weight-bold h1"
+                  style="font-size: 18px"
+                >
+                  رقم أمر الإمداد مطلوب
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 mt-4">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-2 mt-1">
+              <label
+                for="approvalNumberInput"
+                class="font-weight-bold"
+                style="font-size: large"
+                >رقم إذن الإمداد</label
+              >
+            </div>
+            <div class="col-9">
+              <div class="input-group" style="width: 50%">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">#</div>
+                </div>
+                <input
+                  formControlName="approvalNumber"
+                  type="number"
+                  class="form-control w-25"
+                  id="approvalNumberInput"
+                  placeholder="من فضلك أدخل رقم إذن الإمداد"
+                  [ngClass]="{
+                    'is-invalid':
+                      (productFromSupplierForm.get('approvalNumber').errors &&
+                        productFromSupplierForm.get('approvalNumber')
+                          .touched) ||
+                      (submitted &&
+                        productFromSupplierForm.get('approvalNumber').errors)
+                  }"
+                />
+
+                <div
+                  class="invalid-feedback font-weight-bold h1"
+                  style="font-size: 18px"
+                >
+                  رقم إذن الإمداد مطلوب
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 mt-4">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-2 mt-1">
+              <label
+                for="purchaseFeeInput"
+                class="font-weight-bold"
+                style="font-size: large"
+                >رسم الشراء</label
+              >
+            </div>
+            <div class="col-9">
+              <div class="input-group" style="width: 50%">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">#</div>
+                </div>
+                <input
+                  formControlName="purchaseFee"
+                  type="number"
+                  class="form-control w-25"
+                  step="0.1"
+                  id="purchaseFeeInput"
+                  placeholder="من فضلك أدخل رسم الشراء"
+                  [ngClass]="{
+                    'is-invalid':
+                      (productFromSupplierForm.get('purchaseFee').errors &&
+                        productFromSupplierForm.get('purchaseFee').touched) ||
+                      (submitted &&
+                        productFromSupplierForm.get('purchaseFee').errors)
+                  }"
+                />
+
+                <div
+                  class="invalid-feedback"
+                  *ngIf="
+                    productFromSupplierForm
+                      .get('purchaseFee')
+                      .hasError('required') &&
+                    productFromSupplierForm.get('purchaseFee').touched
+                  "
+                >
+                  رسم الشراء مطلوب
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 mt-4">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-2 mt-1">
+              <label
+                for="suppliers"
+                class="font-weight-bold"
+                style="font-size: large"
+                >الموردين</label
+              >
+            </div>
+            <div class="col-9">
+              <select
+                formControlName="supplierId"
+                class="form-control w-50"
+                id="suppliers"
+              >
+                <option
+                  *ngFor="let supplier of suppliers; let i = index"
+                  [ngClass]="{
+                    'is-invalid':
+                      submitted &&
+                      productFromSupplierForm.get('supplierId').errors
+                  }"
+                  [value]="suppliers[i].supplierId"
+                >
+                  {{ suppliers[i].supplierName }}
+                </option>
+              </select>
+
+              <div
+                class="font-weight-bold h1"
+                style="font-size: 18px; color: red"
+                *ngIf="
+                  submitted && productFromSupplierForm.get('supplierId').errors
+                "
+              >
+                من فضلك اختر مورد
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="form-group">
-      <label for="supplyOrderNumberInput">رقم أمر الإمداد</label>
-      <input
-        formControlName="supplyOrderNumber"
-        type="number"
-        class="form-control w-25"
-        id="supplyOrderNumberInput"
-        placeholder="من فضلك أدخل رقم أمر الإمداد"
-        [ngClass]="{
-          'is-invalid':
-            (productFromSupplierForm.get('supplyOrderNumber').errors &&
-              productFromSupplierForm.get('supplyOrderNumber').touched) ||
-            (submitted &&
-              productFromSupplierForm.get('supplyOrderNumber').errors)
-        }"
-      />
-
-      <div
-        class="font-weight-bold h1 invalid-feedback"
-        style="padding-right: 200px; font-size: 24px"
-      >
-        رقم أمر الإمداد مطلوب
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="approvalNumberInput" class="font-weight-bold h3"
-        >رقم إذن الإمداد</label
-      >
-      <input
-        formControlName="approvalNumber"
-        type="number"
-        class="form-control w-25"
-        id="approvalNumberInput"
-        placeholder="من فضلك أدخل رقم إذن الإمداد"
-        [ngClass]="{
-          'is-invalid':
-            (productFromSupplierForm.get('approvalNumber').errors &&
-              productFromSupplierForm.get('approvalNumber').touched) ||
-            (submitted && productFromSupplierForm.get('approvalNumber').errors)
-        }"
-      />
-
-      <div
-        class="invalid-feedback"
-        *ngIf="
-          productFromSupplierForm.get('approvalNumber').hasError('required') &&
-          productFromSupplierForm.get('approvalNumber').touched
-        "
-      >
-        رقم إذن الإمداد مطلوب
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="purchaseFeeInput" class="font-weight-bold h3"
-        >رسم الشراء</label
-      >
-      <input
-        formControlName="purchaseFee"
-        type="number"
-        class="form-control w-25"
-        step="0.1"
-        id="purchaseFeeInput"
-        placeholder="من فضلك أدخل رسم الشراء"
-        [ngClass]="{
-          'is-invalid':
-            (productFromSupplierForm.get('purchaseFee').errors &&
-              productFromSupplierForm.get('purchaseFee').touched) ||
-            (submitted && productFromSupplierForm.get('purchaseFee').errors)
-        }"
-      />
-
-      <div
-        class="invalid-feedback"
-        *ngIf="
-          productFromSupplierForm.get('purchaseFee').hasError('required') &&
-          productFromSupplierForm.get('purchaseFee').touched
-        "
-      >
-        رسم الشراء مطلوب
-      </div>
-    </div>
-
-    <div class="form-group mt-4">
-      <label class="control-label font-weight-bold" style="margin-left: 45px"
-        >نوع المنتج</label
-      >
-      <label class="radio-inline ml-2">
-        <input
-          type="radio"
-          value="Medicine"
-          formControlName="productType"
-          (click)="handleSelectMedinceType()"
-        />دواء
-      </label>
-
-      <label class="radio-inline ml-5">
-        <input
-          type="radio"
-          value="Equipment"
-          formControlName="productType"
-        />مستلزم طبى
-      </label>
-    </div>
-
-    <div class="form-group">
-      <label for="suppliers">الموردين</label>
-      <select
-        formControlName="supplierId"
-        class="form-control w-25"
-        id="suppliers"
-      >
-        <option
-          *ngFor="let supplier of suppliers; let i = index"
-          [ngClass]="{
-            'is-invalid':
-              submitted && productFromSupplierForm.get('supplierId').errors
-          }"
-          [value]="suppliers[i].supplierId"
+    <table class="m-4 table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">إسم المنتج</th>
+          <th scope="col">الصيدلية المستلمة</th>
+          <th scope="col">الكيمة</th>
+          <th scope="col">السعر</th>
+          <th scope="col">تاريخ إنتهاء الصلاحية</th>
+          <th
+            class="ml-4 btn btn-sm btn-success text-white"
+            (click)="addOrUpdateItem(null)"
+          >
+            <fa-icon [icon]="faPlusSquare"></fa-icon> إضافة منتج
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="productSupplierService.orderItems.length == 0">
+          <td class="font-italic text-center" colspan="5">
+            No order item for this order
+          </td>
+        </tr>
+        <tr
+          style="text-align: center"
+          *ngFor="
+            let orderItem of productSupplierService.orderItems;
+            let i = index
+          "
         >
-          {{ suppliers[i].supplierName }}
-        </option>
-      </select>
-
-      <div
-        style="background-color: red"
-        *ngIf="submitted && productFromSupplierForm.get('supplierId').errors"
-      >
-        من فضلك اختر مورد
-      </div>
-    </div>
-
-    <div *ngIf="radioButtonClicked" class="form-group">
-      <label for="products">المنتجات</label>
-      <select
-        formControlName="productId"
-        class="form-control w-25"
-        id="products"
-      >
-        <option
-          *ngFor="let product of products; let i = index"
-          [ngClass]="{
-            'is-invalid':
-              submitted && productFromSupplierForm.get('productId').errors
-          }"
-          [value]="products[i].medicineId"
-        >
-          {{ products[i].medicineName }}
-        </option>
-      </select>
-
-      <div
-        style="background-color: red"
-        *ngIf="submitted && productFromSupplierForm.get('supplierId').errors"
-      >
-        من فضلك اختر مورد
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="pharmacies">الصيدلية المستلمة</label>
-      <select
-        formControlName="pharmacyId"
-        class="form-control w-25"
-        id="pharmacies"
-      >
-        <option
-          *ngFor="let largePharmacy of largePharmacies; let i = index"
-          [ngClass]="{
-            'is-invalid':
-              submitted && productFromSupplierForm.get('pharmacyId').errors
-          }"
-          [value]="largePharmacies[i].pharmacyId"
-        >
-          {{ largePharmacies[i].pharmacyName }}
-        </option>
-      </select>
-
-      <div
-        style="background-color: red"
-        *ngIf="submitted && productFromSupplierForm.get('pharmacyId').errors"
-      >
-        من فضلك اختر صيدلية
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="shippingPriceInput" class="font-weight-bold h3"
-        >سعر الشراء</label
-      >
-      <input
-        formControlName="price"
-        type="number"
-        class="form-control w-25"
-        step="0.1"
-        id="shippingPriceInput"
-        placeholder="من فضلك أدخل سعر الشراء"
-        [ngClass]="{
-          'is-invalid':
-            (productFromSupplierForm.get('price').errors &&
-              productFromSupplierForm.get('price').touched) ||
-            (submitted && productFromSupplierForm.get('price').errors)
-        }"
-      />
-
-      <div
-        class="invalid-feedback"
-        *ngIf="
-          productFromSupplierForm.get('price').hasError('required') &&
-          productFromSupplierForm.get('price').touched
-        "
-      >
-        سعر الشراء مطلوب
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="quantityInput" class="font-weight-bold h3">الكمية</label>
-      <input
-        formControlName="quantity"
-        type="number"
-        class="form-control w-25"
-        step="0.1"
-        id="quantityInput"
-        placeholder="من فضلك أدخل سعر الشراء"
-        [ngClass]="{
-          'is-invalid':
-            (productFromSupplierForm.get('quantity').errors &&
-              productFromSupplierForm.get('quantity').touched) ||
-            (submitted && productFromSupplierForm.get('quantity').errors)
-        }"
-      />
-
-      <div
-        class="invalid-feedback"
-        *ngIf="
-          productFromSupplierForm.get('quantity').hasError('required') &&
-          productFromSupplierForm.get('quantity').touched
-        "
-      >
-        الكمية مطلوب
-      </div>
-    </div>
+          <th>{{ orderItem.medicineName }}</th>
+          <th>{{ orderItem.pharmacyName }}</th>
+          <th>{{ orderItem.itemQuantity }}</th>
+          <th>{{ orderItem.price }}</th>
+          <th>{{ orderItem.expireDate }}</th>
+          <th>
+            <button
+              class="rounded btn-danger"
+              style="
+                margin-right: 15px;
+                padding-right: 20px;
+                padding-left: 20px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+              "
+              (click)="deleteOrderItem(i)"
+            >
+              مسح
+            </button>
+          </th>
+        </tr>
+      </tbody>
+    </table>
 
     <button class="btn btn-success mt-5" type="submit">حفظ</button>
   </form>
 </div>
-<p>{{ productFromSupplierForm.value | json }}</p>
-<p>{{ productFromSupplierForm.status | json }}</p>

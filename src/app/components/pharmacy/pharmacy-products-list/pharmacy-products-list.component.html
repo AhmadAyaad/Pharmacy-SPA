@@ -1,25 +1,46 @@
-<p>pharmacy-products-list works!</p>
+<div class="mr-3" style="margin-top: 10%">
+  <table *ngIf="pharmacyProducts" class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">اسم المنتج</th>
+        <th scope="col">الكود المحلى</th>
+        <th scope="col">الكود الدولى</th>
+        <th scope="col">الوحدة</th>
+        <th scope="col">الكمية</th>
+        <th scope="col">نوع المنتج</th>
+        <th scope="col">سعر البيع</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        style="text-align: start"
+        *ngFor="let pharmacyProduct of pharmacyProducts"
+      >
+        <td>
+          <a (click)="onEditProduct(pharmacyProduct)">
+            {{ pharmacyProduct.medicineName }}
+          </a>
+        </td>
+        <td>
+          {{ pharmacyProduct.medicineCode }}
+        </td>
+        <td>
+          {{ pharmacyProduct.nationalCode }}
+        </td>
+        <td>
+          {{ pharmacyProduct.unitName }}
+        </td>
+        <td>
+          {{ pharmacyProduct.totalQuantity }}
+        </td>
 
-<table *ngIf="pharmacyProducts" class="table table-dark">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let pharmacyProduct of pharmacyProducts">
-      <td>
-        {{ pharmacyProduct.medicineName }}
-      </td>
-      <td>
-        {{ pharmacyProduct.supplierName }}
-      </td>
-      <td>
-        {{ pharmacyProduct.quantity }}
-      </td>
-    </tr>
-  </tbody>
-</table>
+        <td>
+          {{ pharmacyProduct.productType }}
+        </td>
+        <td>
+          {{ pharmacyProduct.sellingPrice }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -6,6 +6,8 @@ import { MedicineListComponent } from './components/medicine/medicine-list/medic
 import { SuppliersListComponent } from './components/supplier/suppliers-list/suppliers-list.component';
 import { RecieveProductFromSupplierComponent } from './components/recieve-product-from-supplier/recieve-product-from-supplier.component';
 import { PharmacyProductsListComponent } from './components/pharmacy/pharmacy-products-list/pharmacy-products-list.component';
+import { PharmacyProductTransferComponent } from './components/pharmacy/pharmacy-product-transfer/pharmacy-product-transfer.component';
+import { ProductDetailComponent } from './components/pharmacy/product-detail/product-detail.component';
 export const routes: Routes = [
   { path: 'medicine', component: CreateMedicineComponentComponent },
   { path: 'medicine/upload', component: MedicineFileUploadComponent },
@@ -14,4 +16,6 @@ export const routes: Routes = [
   { path: 'medicines', component: MedicineListComponent },
   { path: 'productSupplier', component: RecieveProductFromSupplierComponent },
   { path: 'pharmacy', component: PharmacyProductsListComponent },
+  { path: 'pharmacy/product', component: ProductDetailComponent },
+  { path: 'pharmacyTransfer', component: PharmacyProductTransferComponent },
 ];

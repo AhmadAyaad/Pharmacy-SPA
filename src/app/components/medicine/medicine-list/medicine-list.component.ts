@@ -14,12 +14,28 @@ export class MedicineListComponent implements OnInit, OnDestroy {
   medicines;
   medicineName: string;
   subscriber: Subscription;
-  pageNumber: number = 1;
+  response;
+  totalPages;
+  page = 1;
   ngOnInit(): void {
-    this.subscriber = this.medicineService.getMedicines().subscribe((res) => {
-      console.log(res);
-      this.medicines = res;
-    });
+    this.getMedicines(1);
+  }
+
+  getMedicines(pageNumber?) {
+    this.subscriber = this.medicineService
+      .getMedicines(pageNumber)
+      .subscribe((res: any) => {
+        console.log(res);
+        this.response = res;
+        this.totalPages = this.response.totalRecords;
+        this.medicines = this.response.data;
+        // this.totalPages = res.totalPages;
+        // this.medicines = res.data;
+      });
+  }
+  pageChanged(pageNumber) {
+    this.page = pageNumber;
+    this.getMedicines(pageNumber);
   }
   search() {
     if (this.medicineName === '') this.ngOnInit();

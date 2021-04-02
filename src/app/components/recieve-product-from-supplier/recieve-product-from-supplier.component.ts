@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+
 import { IProductSupplierDto } from 'src/app/Dtos/IProductSupplierDto';
 import { ISupplierDto } from 'src/app/Dtos/ISupplierDto';
 import { IMedicine } from 'src/app/_models/IMedicine';
@@ -9,6 +12,7 @@ import { MedicineService } from 'src/app/_services/medicine.service.service';
 import { PharmacyService } from 'src/app/_services/pharmacy.service';
 import { ProductSupplierService } from 'src/app/_services/product-supplier.service';
 import { SupplierService } from 'src/app/_services/supplier.service';
+import { ProductItemsModalComponent } from './product-items-modal/product-items-modal.component';
 
 @Component({
   selector: 'app-recieve-product-from-supplier',
@@ -23,12 +27,14 @@ export class RecieveProductFromSupplierComponent implements OnInit {
   largePharmacies: IPharmacy[];
   submitted = false;
   radioButtonClicked = false;
+  faPlusSquare = faPlusSquare;
   constructor(
     private supplierService: SupplierService,
     private productService: MedicineService,
     private pharmacyService: PharmacyService,
-    private productSupplierService: ProductSupplierService,
-    private alertifyService: AlertifyService
+    public productSupplierService: ProductSupplierService,
+    private alertifyService: AlertifyService,
+    private matDialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -36,6 +42,13 @@ export class RecieveProductFromSupplierComponent implements OnInit {
     this.getSuppliers();
     this.getProducts();
     this.getLargePharmacies();
+  }
+
+  addOrUpdateItem(orderItemIndex) {
+    let config = new MatDialogConfig();
+    config.width = '50%';
+    config.data = { orderItemIndex };
+    this.matDialog.open(ProductItemsModalComponent, config);
   }
 
   getSuppliers() {
@@ -69,12 +82,7 @@ export class RecieveProductFromSupplierComponent implements OnInit {
       supplyOrderNumber: new FormControl('', Validators.required),
       approvalNumber: new FormControl('', Validators.required),
       purchaseFee: new FormControl('', Validators.required),
-      productType: new FormControl('', Validators.required),
       supplierId: new FormControl('', Validators.required),
-      productId: new FormControl('', Validators.required),
-      pharmacyId: new FormControl('', Validators.required),
-      price: new FormControl('', Validators.required),
-      quantity: new FormControl('', Validators.required),
     });
   }
 
@@ -94,12 +102,22 @@ export class RecieveProductFromSupplierComponent implements OnInit {
         .createNewTransferOperation(this.productSupplier)
         .subscribe(
           (res) => {
-            console.log(res);
+            this.submitted = false;
+            this.alertifyService.success('تم إضافة أمر توريد بنجاح');
+            this.productFromSupplierForm.reset();
+            this.productSupplierService.orderItems = [];
           },
           (err) => {
-            console.log(err);
+            this.alertifyService.error(err);
           }
         );
     }
+  }
+
+  deleteOrderItem(index) {
+    this.productSupplierService.orderItems.splice(index, 1);
+  }
+  getOrderItem(index) {
+    console.log(this.productSupplierService.orderItems[index]);
   }
 }

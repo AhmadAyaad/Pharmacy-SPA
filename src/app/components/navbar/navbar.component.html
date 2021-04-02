@@ -32,6 +32,11 @@
             >إستلام دواء من مورد</a
           >
         </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/pharmacyTransfer"
+            >نحويل مننج لصيدلية</a
+          >
+        </li>
 
         <div class="dropdown mt-2" appDropdown #r="appDropdown">
           <p class="dropdown-toggle text-light">منتجات الصيدليات</p>
@@ -41,7 +46,7 @@
               <a
                 style="padding-right: 15px"
                 routerLink="/pharmacy"
-                [queryParams]="{ name: pharmacy.pharmacyName }"
+                [queryParams]="{ id: pharmacy.pharmacyId }"
                 >{{ pharmacy.pharmacyName }}</a
               >
               <div

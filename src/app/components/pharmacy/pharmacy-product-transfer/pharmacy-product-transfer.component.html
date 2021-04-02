@@ -1,0 +1,53 @@
+<div>
+  <form>
+    <table class="m-4 table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">إسم المنتج</th>
+          <th scope="col">الصيدلية المستلمة</th>
+          <th scope="col">الكيمة</th>
+          <th scope="col">السعر</th>
+          <th scope="col">تاريخ إنتهاء الصلاحية</th>
+          <th
+            class="ml-4 btn btn-sm btn-success text-white"
+            (click)="addItem()"
+          >
+            <fa-icon [icon]="faPlusSquare"></fa-icon> إضافة منتج
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <tr *ngIf="_pharmacyService.orderItems.length == 0">
+          <td class="font-italic text-center" colspan="5">
+            No order item for this order
+          </td>
+        </tr> -->
+        <tr
+          style="text-align: center"
+          *ngFor="let orderItem of _pharmacyService.orderItems; let i = index"
+        >
+          <th>{{ orderItem.medicineName }}</th>
+          <th>{{ orderItem.pharmacyName }}</th>
+          <th>{{ orderItem.itemQuantity }}</th>
+          <th>{{ orderItem.price }}</th>
+          <th>{{ orderItem.expireDate }}</th>
+          <th>
+            <button
+              class="rounded btn-danger"
+              style="
+                margin-right: 15px;
+                padding-right: 20px;
+                padding-left: 20px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+              "
+              (click)="deleteOrderItem(i)"
+            >
+              مسح
+            </button>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</div>

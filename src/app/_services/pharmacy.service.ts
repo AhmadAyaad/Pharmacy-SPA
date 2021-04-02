@@ -10,18 +10,22 @@ import {
   providedIn: 'root',
 })
 export class PharmacyService {
-  constructor(private http: HttpClient) {}
   queryParams = new HttpParams();
+  orderItems: [];
+
+  constructor(private http: HttpClient) {}
+
   getLargePharmacies() {
     return this.http.get<IPharmacy[]>(
       `${environment.apiUrl}${largePharmaciesEndpoint}`
     );
   }
 
-  getPharmacyProducts(pharmacyName: string) {
-    this.queryParams = this.queryParams.append('name', pharmacyName);
-    return this.http.get(`${environment.apiUrl}${pharamcyProductsEndpoint}`, {
-      params: this.queryParams,
-    });
+  getPharmacyProducts(pharmacyid: Number) {
+    return this.http.get(
+      `${environment.apiUrl}${pharamcyProductsEndpoint}/${pharmacyid}`
+    );
   }
+
+  makeProductTransfer() {}
 }

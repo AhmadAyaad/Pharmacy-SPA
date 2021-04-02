@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, Subject, Subscription } from 'rxjs';
 import { IPharmacy } from 'src/app/_models/IPharmacy';
 import { PharmacyService } from 'src/app/_services/pharmacy.service';
 
@@ -11,7 +12,10 @@ import { PharmacyService } from 'src/app/_services/pharmacy.service';
 export class NavbarComponent implements OnInit, OnDestroy {
   pharmacies: IPharmacy[];
   subscriber: Subscription;
-  constructor(private pharmacyService: PharmacyService) {}
+  constructor(
+    private pharmacyService: PharmacyService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.getLargePharmacies();
