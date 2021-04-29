@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PharmacyService } from 'src/app/_services/pharmacy.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -8,9 +9,31 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailComponent implements OnInit {
   selectedProductId: Number;
-  constructor(private _activatedRoute: ActivatedRoute) {}
-
+  selectedPharmacyId: Number;
+  expireDates = new Map<any ,any >();
+  productDetail :any;
+  productName: string;
+  constructor(
+    private _activatedRoute: ActivatedRoute,
+    private pharmacyService: PharmacyService
+  ) {}
+  
   ngOnInit(): void {
-    this.selectedProductId = this._activatedRoute.snapshot.queryParams.productId;
+    this.productDetail= this._activatedRoute.snapshot.queryParams
+    console.log(this._activatedRoute.snapshot.queryParams)
+    console.log(this.productDetail);
+    console.log(  this.productDetail.pharamcyId,
+      this.productDetail.id)
+    this.pharmacyService
+      .getPharamacyProductDetails(
+        this.productDetail.pharamcyId,
+        this.productDetail.id
+      )
+      .subscribe((res:any) => {
+        res.forEach((productDetails: any) => {
+          this.expireDates.set(productDetails.productsQuantity.expireDate, productDetails.productsQuantity.totalProductQuantity)
+        })
+        console.log(this.expireDates , this.productDetail)
+      });
   }
 }

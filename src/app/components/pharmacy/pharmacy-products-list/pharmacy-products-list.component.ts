@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { pharamcyProductsEndpoint } from 'src/app/endpoints';
 import { PharmacyService } from 'src/app/_services/pharmacy.service';
 
 @Component({
@@ -62,10 +63,25 @@ export class PharmacyProductsListComponent implements OnInit, OnDestroy {
         }
       );
   }
-  onEditProduct(pharmacyProduct) {
-    console.log(pharmacyProduct);
-    this._router.navigate([`/pharmacy/product`], {
-      queryParams: { productId: pharmacyProduct.id },
-    });
+  onSelectProduct(pharmacyProduct) {
+    console.log(pharmacyProduct)
+    pharmacyProduct['pharamcyId'] = this.pharmacyId;
+    this._router.navigate([`/pharmacy/product`], { queryParams: pharmacyProduct,  skipLocationChange: true });
+
+    // this._router.navigate([`/pharmacy/product`], {
+    //   queryParams: {
+    //     // productId: pharmacyProduct.id,
+    //     // pharmacyId: this.pharmacyId,
+    //     pharmacyProduct
+    //     // medicineCode: pharmacyProduct.medicineCode,
+    //     // medicineName: pharmacyProduct.medicineName,
+    //     // nationalCode: pharmacyProduct.nationalCode,
+    //     // price: pharmacyProduct.price,
+    //     // productType: pharmacyProduct.productType,
+    //     // unitName: pharmacyProduct.unitName,
+    //     // totalQuantity:pharmacyProduct.totalQuantity
+    //   },
+    //   skipLocationChange:true
+    // });
   }
 }

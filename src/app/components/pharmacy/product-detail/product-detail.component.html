@@ -1,1 +1,4 @@
 <p>product-detail works!</p>
+<div *ngFor="let item of expireDates | keyvalue">
+    Key: <b>{{item.key}}</b> and Value: <b>{{item.value}}</b>
+</div>

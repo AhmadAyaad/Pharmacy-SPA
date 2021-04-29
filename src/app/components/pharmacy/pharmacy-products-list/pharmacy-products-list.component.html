@@ -12,12 +12,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr
-        style="text-align: start"
-        *ngFor="let pharmacyProduct of pharmacyProducts"
-      >
+      <tr style="text-align: start" *ngFor="let pharmacyProduct of pharmacyProducts">
         <td>
-          <a (click)="onEditProduct(pharmacyProduct)">
+          <a (click)="onSelectProduct(pharmacyProduct)">
             {{ pharmacyProduct.medicineName }}
           </a>
         </td>

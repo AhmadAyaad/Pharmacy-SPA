@@ -5,6 +5,7 @@ import { IPharmacy } from '../_models/IPharmacy';
 import {
   pharamcyProductsEndpoint,
   largePharmaciesEndpoint,
+  pharmacyProductDetails,
 } from '../endpoints';
 @Injectable({
   providedIn: 'root',
@@ -27,5 +28,10 @@ export class PharmacyService {
     );
   }
 
+  getPharamacyProductDetails(pharmacyId: Number, productId: Number) {
+    return this.http.get(
+      `${environment.apiUrl}${pharmacyProductDetails}/${productId}/${pharmacyId}`
+    );
+  }
   makeProductTransfer() {}
 }
