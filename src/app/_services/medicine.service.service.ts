@@ -7,7 +7,6 @@ export class MedicineService {
   constructor(private http: HttpClient) {}
 
   createMedicine(medicine) {
-    console.log(medicine, 'medicine');
     return this.http.post(`${environment.apiUrl}medicine`, medicine);
   }
   uploadFile(file) {
@@ -20,14 +19,16 @@ export class MedicineService {
       medicines
     );
   }
-  getMedicines(pageNumber) {
+  getMedicines(pageNumber , pageSize) {
     let params = new HttpParams();
-    let pageSize = '10';
     params = params.append('pageNumber', pageNumber);
     params = params.append('pageSize', pageSize);
     return this.http.get(`${environment.apiUrl}medicine`, { params });
   }
   getMedicinesWithUnitNames() {
     return this.http.get<IMedicine[]>(`${environment.apiUrl}medicine/units`);
+  }
+  deleteProduct(productId:Number){
+    return this.http.delete(`${environment.apiUrl}medicine/delete/${productId}`);
   }
 }

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { faSort } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,7 +15,8 @@ export class SuppliersListComponent implements OnInit {
   faSort = faSort;
   constructor(
     private supplierSerivce: SupplierService,
-    private alertifySerivce: AlertifyService
+    private alertifySerivce: AlertifyService,
+    private router :Router
   ) {}
   suppliers: ISupplierDto[];
   supplierName: String;
@@ -45,5 +47,8 @@ export class SuppliersListComponent implements OnInit {
           .match(this.supplierName.toLocaleLowerCase());
       });
     }
+  }
+  goToCreateSupplierPage(){
+    this.router.navigate(['/supplier/create']);
   }
 }

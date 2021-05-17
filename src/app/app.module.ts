@@ -31,6 +31,19 @@ import { PharmacyProductTransferComponent } from './components/pharmacy/pharmacy
 import { PharmacyTransferItemsModalComponent } from './components/pharmacy/pharmacy-transfer-items-modal/pharmacy-transfer-items-modal.component';
 import { ProductDetailComponent } from './components/pharmacy/product-detail/product-detail.component';
 
+import {MegaMenuModule} from 'primeng/megamenu';
+import {ButtonModule} from 'primeng/button';
+import {MenubarModule} from 'primeng/menubar';
+import {TableModule} from 'primeng/table';
+import {PanelModule} from 'primeng/panel';
+import {TooltipModule} from 'primeng/tooltip';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ToastModule} from 'primeng/toast';
+import {InputTextModule} from 'primeng/inputtext';
+
+import {ConfirmationService} from 'primeng/api'
+import {MessageService} from 'primeng/api';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +72,15 @@ import { ProductDetailComponent } from './components/pharmacy/product-detail/pro
     FontAwesomeModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    MegaMenuModule,
+    ButtonModule,
+    MenubarModule,
+    TableModule,
+    PanelModule,
+    TooltipModule,
+    ConfirmDialogModule,
+    ToastModule,
+    InputTextModule,
   ],
   entryComponents: [
     ProductItemsModalComponent,
@@ -71,6 +93,8 @@ import { ProductDetailComponent } from './components/pharmacy/product-detail/pro
     SupplierService,
     AlertifyService,
     ProductSupplierService,
+    ConfirmationService,
+    MessageService
   ],
   bootstrap: [AppComponent],
 })

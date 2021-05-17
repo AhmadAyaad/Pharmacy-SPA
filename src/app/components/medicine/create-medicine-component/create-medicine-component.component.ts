@@ -24,6 +24,7 @@ export class CreateMedicineComponentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
     this.createMedicineForm();
     this.unitService.getUnits().subscribe((res: any) => {
       this.units = res;

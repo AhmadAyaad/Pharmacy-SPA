@@ -1,0 +1,18 @@
+
+::ng-deep .p-datatable .p-datatable-tbody > tr > td{
+    padding:0rem 1rem;
+}
+
+.text-center{
+    text-align: center;
+    padding: 3px;
+}
+tr:hover{
+    background-color:rgba(206, 206, 206, 0.514) ;
+}
+.edit-btn-bg:hover{
+    background-color: #575701;
+}
+.delete-btn-bg:hover{
+    background-color: rgb(87, 2, 2);
+}

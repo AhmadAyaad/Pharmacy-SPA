@@ -4,5 +4,40 @@ body {
   margin-top: 125px;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.content-container {
+  padding: 5px;
+}
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+}
+.text-truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.edit-btn-bg {
+  background: #d1d133;
+  border: 1px solid #bdc0c2;
+}
+.delete-btn-bg {
+  background: #d71f1f;
+  border: 1px solid #bdc0c2;
+}
+.not-found-grid{
+  position: relative;
+    right: 185%;
+    top: 5px;
+    padding: 5px;
+    font-weight: bold;
+}
