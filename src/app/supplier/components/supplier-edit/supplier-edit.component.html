@@ -1,0 +1,50 @@
+<div class="p-4" style="background-color: #f2f2f2;width: 63%;border-radius: 12px;margin: 0 auto;">
+    <p-panel header="إضافة مورد">
+        <form [formGroup]="supplierFormGroup" (ngSubmit)="onSubmit()" class="p-panel-content">
+            <div class="row form-group p-fluid">
+                <!--#region Supplier Name-->
+                <div class="col p-field">
+                    <label for="supplierInputName" class="font-weight-bold">إسم المورد</label>
+                    <input formControlName="name" placeholder="إسم المورد" type="text" class="form-control p-inputtext"
+                        id="supplierInputName" />
+                    <small class="form-error" *ngIf="
+                formControls?.name?.touched && formControls?.name?.errors?.required
+              ">إسم المورد مطلوب</small>
+                    <small class="form-error" *ngIf="
+                formControls?.name?.touched && formControls?.name?.errors?.maxlength
+              ">
+                        إسم المورد يجب أن لا يزيد عن 50 حرف
+                    </small>
+                </div>
+                <!--#endregion Supplier Name-->
+                <!--#region phone-->
+                <div class="col p-field">
+                    <label for="phone" class="font-weight-bold">رقم الموبيل</label>
+                    <input formControlName="phone" type="text" class="form-control" id="phone"
+                        placeholder="رقم الموبيل" />
+                </div>
+                <!--#endregion phone-->
+            </div>
+            <div class="row form-group p-fluid">
+                <!--#region address-->
+                <div class="col">
+                    <label for="address" class="font-weight-bold">العنوان</label>
+                    <input formControlName="address" type="text" class="form-control" id="address"
+                        placeholder="العنوان" />
+                    <small class="form-error" *ngIf="
+                    formControls?.address?.touched &&
+                    formControls?.address?.errors?.required
+                    ">العنوان مطلوب</small>
+                    <small class="form-error" *ngIf="
+                    formControls?.address?.touched &&
+                    formControls?.address?.errors?.maxlength
+                    ">العنوان يجب أن لايزيد عن 75 حروف</small>
+                </div>
+                <!--#endregion address -->
+            </div>
+            <div style="text-align: center">
+                <button class="btn btn-success mt-5" [disabled]="!supplierFormGroup.valid" type="submit">إضافة</button>
+            </div>
+        </form>
+    </p-panel>
+</div>

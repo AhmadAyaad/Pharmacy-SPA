@@ -1,0 +1,85 @@
+<div class="p-4" style="background-color: #f2f2f2;width: 63%;border-radius: 12px;margin: 0 auto;">
+    <p-panel header="تعديل منتج">
+        <form [formGroup]="productEditFormGroup" (ngSubmit)="onSubmit()" *ngIf="productEditFormGroup"
+            class="p-panel-content">
+            <div class="row form-group p-fluid">
+                <!--#region Product Name-->
+                <div class="col p-field">
+                    <label for="prodcutInputName" class="font-weight-bold">إسم المنتج</label>
+                    <input formControlName="name" placeholder="إسم المنتج" type="text" class="form-control p-inputtext"
+                        id="prodcutInputName" />
+                    <small class="form-error" *ngIf="
+                formControls?.name?.touched && formControls?.name?.errors?.required
+              ">إسم المنتج مطلوب</small>
+                    <small class="form-error" *ngIf="
+                formControls?.name?.touched && formControls?.name?.errors?.maxlength
+              ">
+                        إسم المنتج يجب أن لا يزيد عن 50 حرف
+                    </small>
+                </div>
+                <!--#endregion Product Name-->
+                <!--#region Local code-->
+                <div class="col">
+                    <label for="productLocalCode" class="font-weight-bold">الكود المحلى</label>
+                    <input formControlName="localCode" type="text" class="form-control" id="productLocalCode"
+                        placeholder="الكود المحلى" />
+                    <small class="form-error" *ngIf="
+                formControls?.localCode?.touched &&
+                formControls?.localCode?.errors?.required
+              ">الكود المحلى مطلوب</small>
+                    <small class="form-error" *ngIf="
+              formControls?.localCode?.touched &&
+              formControls?.localCode?.errors?.maxlength
+            ">الكود المحلى يجب أن لايزيد عن {{maxLength}} حروف</small>
+                </div>
+                <!--#endregion Local code-->
+            </div>
+
+            <div class="row form-group p-fluid">
+                <!--#region unit-->
+                <div class="col p-field">
+                    <label for="productUnit" class="font-weight-bold">الوحدة</label>
+                    <p-dropdown formControlName="unitId" placeholder="إختر وحدة" [options]="units" optionLabel="label"
+                        dataKey="value">
+                    </p-dropdown>
+                    <small class="form-error"
+                        *ngIf="formControls?.unitId?.touched && formControls?.unitId?.errors?.required">الوحدة
+                        مطلوبة</small>
+                </div>
+                <!--#endregion unit-->
+                <!--#region Product type-->
+                <div class="col">
+                    <label for="productType" class="font-weight-bold">نوع المنتج</label>
+                    <p-dropdown formControlName="productType" [options]="productTypes" placeholder="إختر نوع المنتج"
+                        optionLabel="name" datakey="value"></p-dropdown>
+                    <small class="form-error" *ngIf="
+                formControls?.productType?.touched &&
+                formControls?.productType?.errors?.required
+              ">نوع المنتج مطلوب</small>
+                </div>
+                <!--#endregion Product type-->
+            </div>
+            <div class="row form-group p-fluid">
+                <!--#region National code-->
+                <div class="col p-field">
+                    <label for="prodcutNationalCode" class="font-weight-bold">الكود الدولى</label>
+                    <input formControlName="nationalCode" type="text" class="form-control p-inputtext"
+                        id="prodcutNationalCode" />
+                    <small class="form-error" *ngIf="
+                  formControls?.nationalCode?.touched && formControls?.nationalCode?.errors?.required
+                ">الكودالدولى مطلوب</small>
+                    <small class="form-error" *ngIf="
+                  formControls?.nationalCode?.touched && formControls?.nationalCode?.errors?.maxlength
+                ">
+                        الكود الدولى يجب أن لايقل عن {{maxLength}} حروف
+                    </small>
+                </div>
+                <!--#endregion National code-->
+            </div>
+            <div style="text-align: center">
+                <button class="btn btn-success mt-5" [disabled]="!productEditFormGroup.valid || !isDataChanged"
+                    type="submit">تعديل</button>
+            </div>
+        </form>
+    </p-panel>
+</div>

@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MedicineService } from './_services/medicine.service.service';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,6 +6,6 @@ import { MedicineService } from './_services/medicine.service.service';
 })
 export class AppComponent implements OnInit {
   title = 'pharmacy-SPA';
-  constructor(private service: MedicineService) {}
+  constructor() {}
   ngOnInit(): void {}
 }

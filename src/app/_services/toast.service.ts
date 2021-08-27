@@ -11,14 +11,14 @@ export class ToastService {
   showToastMessage(
     summary: string,
     detail: string,
-    timeTodisaply: number,
-    severity: ToastStateEnum
+    severity: ToastStateEnum,
+    timeTodisaply: number = 5000
   ) {
     this.messageService.add({
       summary,
       detail,
-      life: timeTodisaply,
       severity: this.getSeverity(severity),
+      life: timeTodisaply,
     });
   }
 

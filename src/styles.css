@@ -41,3 +41,6 @@ body {
     padding: 5px;
     font-weight: bold;
 }
+.form-error {
+  color: red;
+}

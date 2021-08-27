@@ -4,8 +4,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 
 import { IProductSupplierDto } from 'src/app/Dtos/IProductSupplierDto';
-import { ISupplierDto } from 'src/app/Dtos/ISupplierDto';
-import { IMedicine } from 'src/app/_models/IMedicine';
+import { IProduct } from 'src/app/_models/IProduct';
 import { IPharmacy } from 'src/app/_models/IPharmacy';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { MedicineService } from 'src/app/_services/medicine.service.service';
@@ -22,8 +21,8 @@ import { ProductItemsModalComponent } from './product-items-modal/product-items-
 export class RecieveProductFromSupplierComponent implements OnInit {
   productFromSupplierForm: FormGroup;
   productSupplier: IProductSupplierDto;
-  suppliers: ISupplierDto[];
-  products: IMedicine[];
+  suppliers;
+  products: IProduct[];
   largePharmacies: IPharmacy[];
   submitted = false;
   radioButtonClicked = false;
@@ -39,7 +38,7 @@ export class RecieveProductFromSupplierComponent implements OnInit {
 
   ngOnInit(): void {
     this.createProductSupplierForm();
-    this.getSuppliers();
+    // this.getSuppliers();
     this.getProducts();
     this.getLargePharmacies();
   }
@@ -51,21 +50,21 @@ export class RecieveProductFromSupplierComponent implements OnInit {
     this.matDialog.open(ProductItemsModalComponent, config);
   }
 
-  getSuppliers() {
-    this.supplierService.getSuppliers().subscribe(
-      (res: ISupplierDto[]) => {
-        this.suppliers = res;
-      },
-      (err) => {
-        this.alertifyService.error(err);
-      }
-    );
-  }
+  // getSuppliers() {
+  //   this.supplierService.getSuppliers().subscribe(
+  //     (res: ISupplierDto[]) => {
+  //       this.suppliers = res;
+  //     },
+  //     (err) => {
+  //       this.alertifyService.error(err);
+  //     }
+  //   );
+  // }
 
   getProducts() {
     this.productService
       .getMedicinesWithUnitNames()
-      .subscribe((res: IMedicine[]) => {
+      .subscribe((res: IProduct[]) => {
         this.products = res;
       });
   }
@@ -119,5 +118,9 @@ export class RecieveProductFromSupplierComponent implements OnInit {
   }
   getOrderItem(index) {
     console.log(this.productSupplierService.orderItems[index]);
+  }
+
+  get controls() {
+    return this.productFromSupplierForm.controls;
   }
 }

@@ -3,8 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IPharmacy } from 'src/app/_models/IPharmacy';
 import { PharmacyService } from 'src/app/_services/pharmacy.service';
-import {MenuItem} from 'primeng/api';
-
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-navbar',
@@ -17,30 +16,26 @@ export class NavbarComponent implements OnInit, OnDestroy {
   // items: MegaMenuItem[];
   items: MenuItem[];
 
-  constructor(
-    private pharmacyService: PharmacyService,
-    private activatedRoute: ActivatedRoute,
-    private router : Router
-  ) {}
+  constructor(private pharmacyService: PharmacyService  ) {}
 
   ngOnInit(): void {
-  this.items = [
-    {
-          label: 'المنتجات',routerLink:"/medicines",
-
-    },
-    {
-              label: 'الموردين', routerLink:"/suppliers"
-            
-          },
-    {
+    this.items = [
+      {
+        label: 'المنتجات',
+        routerLink: '/products/list',
+      },
+      {
+        label: 'الموردين',
+        routerLink: '/suppliers/list',
+      },
+      {
         label: 'عمليات',
         items: [
-          {label: 'إستلام منتج من مورد', routerLink :"/productSupplier"},
-          {label:"تحويل منتج لصيدلية" , "routerLink":"/pharmacyTransfer"}
-        ]
-    }
-];
+          { label: 'إستلام منتج من مورد', routerLink: '/productSupplier' },
+          { label: 'تحويل منتج لصيدلية', routerLink: '/pharmacyTransfer' },
+        ],
+      },
+    ];
     this.getLargePharmacies();
   }
 

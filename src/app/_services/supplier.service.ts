@@ -1,19 +1,33 @@
-import { HttpClient } from '@angular/common/http';
+import { ISupplier } from './../_models/ISupplier.model';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
-import { ISupplierDto } from '../Dtos/ISupplierDto';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SupplierService {
+  apiUrl: string = `${environment.apiUrl}Supplier`;
+
   constructor(private http: HttpClient) {}
-  createSupplier(supplier: ISupplierDto) {
-    return this.http.post(`${environment.apiUrl}supplier/create`, supplier);
+  createSupplier(supplier: ISupplier) {
+    return this.http.post(`${this.apiUrl}`, supplier);
   }
 
-  getSuppliers(): Observable<ISupplierDto[]> {
-    return this.http.get<ISupplierDto[]>(`${environment.apiUrl}supplier`);
+  getPaginatedSuppliers(pageIndex, pageSize): Observable<ISupplier[]> {
+    let params = new HttpParams();
+    params = params.append('pageNumber', pageIndex);
+    params = params.append('pageSize', pageSize);
+    return this.http.get<ISupplier[]>(`${this.apiUrl}/paged-suppliers`);
+  }
+  getSupplier(supplierId: Number) {
+    return this.http.get<ISupplier>(`${this.apiUrl}/${supplierId}`);
+  }
+  updateSupplier(updatedSupplier: ISupplier) {
+    return this.http.put(this.apiUrl, updatedSupplier);
+  }
+  deleteSupplier(supplierId: Number) {
+    return this.http.delete(`${this.apiUrl}/${supplierId}`);
   }
 }

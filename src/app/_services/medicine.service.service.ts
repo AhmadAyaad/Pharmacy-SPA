@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { IMedicine } from '../_models/IMedicine';
+import { IProduct } from '../_models/IProduct';
 @Injectable()
 export class MedicineService {
   constructor(private http: HttpClient) {}
@@ -19,16 +19,18 @@ export class MedicineService {
       medicines
     );
   }
-  getMedicines(pageNumber , pageSize) {
+  getMedicines(pageNumber, pageSize) {
     let params = new HttpParams();
     params = params.append('pageNumber', pageNumber);
     params = params.append('pageSize', pageSize);
     return this.http.get(`${environment.apiUrl}medicine`, { params });
   }
   getMedicinesWithUnitNames() {
-    return this.http.get<IMedicine[]>(`${environment.apiUrl}medicine/units`);
+    return this.http.get<IProduct[]>(`${environment.apiUrl}medicine/units`);
   }
-  deleteProduct(productId:Number){
-    return this.http.delete(`${environment.apiUrl}medicine/delete/${productId}`);
+  deleteProduct(productId: Number) {
+    return this.http.delete(
+      `${environment.apiUrl}medicine/delete/${productId}`
+    );
   }
 }
