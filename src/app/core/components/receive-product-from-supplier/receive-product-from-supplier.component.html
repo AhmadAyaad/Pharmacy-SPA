@@ -1,0 +1,66 @@
+<div class="p-4" style="background-color: #f2f2f2;width: 95%;border-radius: 12px;margin: 0 auto;">
+  <p-panel header="أمر توريد">
+    <form [formGroup]="supplierOrderForm" (ngSubmit)="onSubmit()">
+
+      <div class="row m-auto  form-group p-fluid">
+        <div class="col p-field ">
+          <label for="importOrderNumberInput" class="font-weight-bold">رقم أمر التوريد</label>
+          <div class="d-flex">
+            <div class="input-group-prepend">
+              <div class="input-group-text">#</div>
+            </div>
+            <input formControlName="importOrderNumber" placeholder="رقم أمر التوريد" type="number"
+              class="w-25 p-inputtext" id="importOrderNumberInput" />
+          </div>
+          <small *ngIf="formControls?.importOrderNumber?.touched && formControls?.importOrderNumber?.errors?.required"
+            class="form-error">رقم أمر التوريد مطلوب</small>
+        </div>
+      </div>
+
+      <table class="m-4 table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">رقم إذن الإمداد</th>
+            <th scope="col"> رقم أمر الإمداد</th>
+            <th scope="col"> رقم الباتش</th>
+            <th scope="col">رسم الشراء</th>
+            <th scope="col">إسم المنتج</th>
+            <th scope="col">الصيدلية المستلمة</th>
+            <th scope="col">إسم المورد</th>
+            <th scope="col">الكيمة</th>
+            <th scope="col">السعر</th>
+            <th scope="col">تاريخ إنتهاء الصلاحية</th>
+            <th class="ml-4 btn btn-sm btn-success text-white" (click)="addNewProduct()">
+              <fa-icon [icon]="faPlusSquare"></fa-icon> إضافة منتج
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="data.length<=0">
+            <td class="font-italic text-center" colspan="10">
+              لم يتم إضافة منتجات
+            </td>
+          </tr>
+          <tr style="text-align: center" *ngFor="let product of data;let i = index">
+            <th>{{ product?.approvalNumber }}</th>
+            <th>{{ product?.supplyOrderNumber }}</th>
+            <th>{{ product?.batchNumber }}</th>
+            <th>{{ product?.purchaseFee }}</th>
+            <th>{{ product?.productId?.name }}</th>
+            <th>{{ product?.pharmacyId?.name }}</th>
+            <th>{{ product?.supplierId?.name }}</th>
+            <th>{{ product?.quantity }}</th>
+            <th>{{ product?.price }}</th>
+            <th>{{ product?.expireDate }}</th>
+            <th>
+              <button pButton pTooltip="مسح" tooltipPosition="top" icon="fas fa-trash"
+                class="mr-4 delete-btn-bg"></button>
+
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-success mt-5" type="submit" [disabled]="!supplierOrderForm.valid">حفظ</button>
+    </form>
+  </p-panel>
+</div>

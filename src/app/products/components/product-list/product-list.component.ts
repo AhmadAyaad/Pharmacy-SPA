@@ -71,7 +71,7 @@ export class ProductListComponent implements OnInit {
   loadProductLazy(paginateEventData) {
     const pageNumber = paginateEventData.first / paginateEventData.rows;
     this.subscriber = this.productService
-      .getProducts(paginateEventData.rows, pageNumber)
+      .getPaignatedProducts(paginateEventData.rows, pageNumber)
       .subscribe((res: any) => {
         this.products = res.items;
         this.totalProductsCount = res.rowCount;

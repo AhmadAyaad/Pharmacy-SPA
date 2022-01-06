@@ -1,0 +1,171 @@
+<form [formGroup]="supplierOrderDetailsForm" *ngIf="supplierOrderDetailsForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+        <!-- #region supply Order Number -->
+        <div class="col p-field">
+            <label for="supplyOrderNumberInput" class="font-weight-bold">رقم أمر الإمداد</label>
+            <div class="d-flex">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">#</div>
+                </div>
+                <input formControlName="supplyOrderNumber" placeholder="رقم أمر الإمداد" type="number"
+                    class="form-control p-inputtext" id="supplyOrderNumberInput" />
+            </div>
+            <small *ngIf="formControls?.supplyOrderNumber?.touched && formControls?.supplyOrderNumber?.errors?.required"
+                class="form-error">رقم أمر الإمداد مطلوب</small>
+        </div>
+        <!-- #endregion supply Order Number -->
+
+        <!-- #region Approval Number -->
+        <div class="col p-field">
+            <label for="approvalNumberInput" class="font-weight-bold">رقم إذن الإمداد</label>
+            <div class="d-flex">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">#</div>
+                </div>
+                <input formControlName="approvalNumber" placeholder="رقم إذن الإمداد" type="number"
+                    class="form-control p-inputtext" id="approvalNumberInput" />
+            </div>
+            <small *ngIf="formControls?.approvalNumber?.touched && formControls?.approvalNumber?.errors?.required"
+                class="form-error">رقم إذن الإمداد مطلوب</small>
+        </div>
+        <!-- #endregion Approval Number -->
+
+        <!-- #region Batch Number -->
+        <div class="col p-field">
+            <label for="batchNumberInput" class="font-weight-bold">رقم الباتش</label>
+            <div class="d-flex">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">#</div>
+                </div>
+                <input formControlName="batchNumber" placeholder="رقم الباتش" type="text"
+                    class="form-control p-inputtext" id="batchNumberInput" />
+            </div>
+            <small *ngIf="formControls?.batchNumber?.touched && formControls?.batchNumber?.errors?.required"
+                class="form-error">رقم الباتش مطلوب</small>
+        </div>
+        <!-- #endregion Batch Number -->
+
+        <!-- #region Purchase Fee -->
+        <div class="col p-field">
+            <label for="purchaseFeeInput" class="font-weight-bold">رسم الشراء</label>
+            <div class="d-flex">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">#</div>
+                </div>
+                <input formControlName="purchaseFee" placeholder="رسم الشراء" type="number"
+                    class="form-control p-inputtext" id="purchaseFeeInput" />
+            </div>
+            <small *ngIf="formControls?.purchaseFee?.touched && formControls?.purchaseFee?.errors?.required"
+                class="form-error">رسم الشراء مطلوب</small>
+            <small *ngIf="formControls?.purchaseFee?.touched && formControls?.purchaseFee?.errors?.min"
+                class="form-error"> من فضلك أدخل رسم شراء صحيح </small>
+        </div>
+        <!-- #endregion Purchase Fee -->
+
+        <!-- #region Suppliers -->
+        <div class="col p-field">
+            <label for="productUnit" class="font-weight-bold">الموردين</label>
+            <div>
+                <p-dropdown [styleClass]="'w-100'" formControlName="supplierId" placeholder="إختر مورد"
+                    [options]="suppliers" optionLabel="name">
+                </p-dropdown>
+            </div>
+            <small class="form-error"
+                *ngIf="formControls?.supplierId?.touched && formControls?.supplierId?.errors?.required">المورد
+                مطلوب</small>
+        </div>
+        <!-- #endregion Suppliers -->
+
+        <!-- #region Products -->
+        <div class="col form-group">
+            <label class="font-weight-bold">المنتجات</label>
+            <p-dropdown [styleClass]="'w-100'" formControlName="productId" placeholder="إختر منتج" [options]="products"
+                optionLabel="name" dataKey="id">
+            </p-dropdown>
+            <div *ngIf="
+          formControls?.productId?.touched &&
+          formControls?.productId?.errors?.required
+        ">
+                <small class="form-error"> من فضلك اختر منتج </small>
+            </div>
+        </div>
+        <!-- #endregion Products -->
+
+        <!-- #region Pharmacies -->
+        <div class="col form-group">
+            <label class="font-weight-bold">الصيدليات</label>
+            <p-dropdown [styleClass]="'w-100'" formControlName="pharmacyId" placeholder="إختر الصيدلية المستلمة"
+                [options]="largePharmacies" optionLabel="name" dataKey="id">
+            </p-dropdown>
+            <div *ngIf="
+          formControls?.pharmacyId?.touched &&
+          formControls?.pharmacyId?.errors?.required
+        ">
+                <small class="form-error"> من فضلك اختر الصيدلية المستلمة </small>
+            </div>
+        </div>
+        <!-- #endregion Pharmacies -->
+
+        <!-- <fa-icon [icon]="faWindowClose"></fa-icon> خروج -->
+        <div class="d-flex">
+            <!-- #region Price -->
+            <div class="col form-group">
+                <label class="font-weight-bold">السعر</label>
+                <div>
+                    <input formControlName="price" pInputText type="number" min="1" placeholder="أدخل السعر" />
+                </div>
+                <div *ngIf="
+            formControls?.price?.touched &&
+            formControls?.price?.errors?.required
+            ">
+                    <small class="form-error"> من فضلك أدخل السعر </small>
+                </div>
+                <div *ngIf="
+            formControls?.price?.touched && formControls?.price?.errors?.min
+            ">
+                    <small class="form-error"> من فضلك أدخل سعر صحيح </small>
+                </div>
+            </div>
+            <!-- #endregion Price -->
+            <!-- #region Expire Date -->
+            <div class="form-group">
+                <label class="font-weight-bold">تاريخ إنتهاء الصلاحية</label>
+                <div>
+                    <p-calendar [showIcon]="true" icon="pi pi-calendar" formControlName="expireDate"></p-calendar>
+                </div>
+
+                <div *ngIf="
+            formControls?.expireDate?.touched &&
+            formControls?.expireDate?.errors?.required
+            ">
+                    <small class="form-error"> من فضلك أدخل تاريخ إنتهاء الصلاحية </small>
+                </div>
+            </div>
+            <!-- #endregion Expire Date -->
+        </div>
+        <!-- #region Quantity -->
+        <div class="col form-group">
+            <label class="font-weight-bold">الكمية</label>
+            <div>
+                <input formControlName="quantity" pInputText type="number" min="1" placeholder="أدخل الكمية" />
+            </div>
+            <div *ngIf="
+                formControls?.quantity?.touched &&
+                formControls?.quantity?.errors?.required">
+                <small class="form-error"> من فضلك أدخل الكمية </small>
+            </div>
+            <div *ngIf="
+            formControls?.quantity?.touched && formControls?.quantity?.errors?.min
+            ">
+                <small class="form-error"> من فضلك أدخل كمية صحيحة </small>
+            </div>
+        </div>
+        <!-- #endregion Quantity -->
+
+
+        <div class="d-flex mt-2" style="justify-content: space-evenly;">
+            <button type="button">إلغاء</button>
+            <button type="submit">إضافة</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,78 @@
+<!-- <p-sidebar style="position: relative;" position="right" [modal]="false"
+  [ngClass]="{'closed':isSideMenuCollasped , 'open':!isSideMenuCollasped}" [showCloseIcon]="false" [visible]="true">
+
+  <button [ngClass]="{'bla':!isSideMenuCollasped , 'bla2':isSideMenuCollasped}"
+    (click)="isSideMenuCollasped = !isSideMenuCollasped" style="position:absolute;">test</button>
+
+  <div class="logo">
+    <img src="../../../../assets/hotel-supplier.png" style="width: 35px;" />
+  </div>
+  <div class="user-section">
+    <p-menu appendTo="sidebar" [baseZIndex]="1000001" #menu [model]="userMenu" [popup]="true"></p-menu>
+    <button type="button" pButton class="menu-button" (click)="menu.toggle($event)">
+      <p-avatar [label]="userAvatarName" shape="circle"></p-avatar>
+      <span class="text-truncate">{{userName}}</span>
+    </button>
+  </div>
+  <p-scrollPanel>
+    <!-- <ul class="navigation-items">
+      <li>
+        <a>
+          <div style="display: flex; flex-direction: row;">
+            <img height="37px" alt="image" src="../assets/product.png" />
+            <span style="color: white;">المنتجات</span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a>
+          <div style="display: flex; flex-direction: row;">
+            <img height="37px" alt="image" src="../assets/hotel-supplier.png" />
+            <span style="color: white;">الموردين</span>
+          </div>
+        </a>
+      </li>
+    </ul> -->
+<!-- 
+    <p-accordion #accordion [expandIcon]="''" collapseIcon="''">
+      <p-accordionTab>
+        <p-header (click)="openSideMenu()">
+          <div [ngClass]="pharmaciesSelected ? 'nested-menu-container  active-link': 'nested-menu-container'"
+            tooltipZIndex="1000001" [pTooltip]="isSideMenuCollasped? 'pharmacies' :''" tooltipPosition="right">
+            <div class="img-conatiner pharmacies">
+              <img class="icon" src="../../../../assets/hotel-supplier.png" />
+            </div>
+            <span class="side-menu-item" style="color:white">صيدليات</span>
+          </div>
+        </p-header>
+        <ng-template pTemplate="content">
+          <div class="side-menu-item-content" routerLinkActive="active-link" [routerLinkActiveOptions]="{excat:true}">
+            <a (click)="closeSideMenu()">Mgany</a>
+            <a (click)="closeSideMenu()">Nf2a</a>
+            <a (click)="closeSideMenu()">Mgany</a>
+          </div>
+        </ng-template>
+      </p-accordionTab>
+
+
+      <p-accordionTab>
+        <p-header (click)="openSideMenu()">
+          <div [ngClass]="orderSupplySelected ? 'nested-menu-container  active-link': 'nested-menu-container'"
+            tooltipZIndex="1000001" [pTooltip]="isSideMenuCollasped? 'orders' :''" tooltipPosition="right">
+            <div class="img-conatiner pharmacies">
+              <img class="icon" src="../../../../assets/hotel-supplier.png" />
+            </div>
+            <span class="side-menu-item">أمور توريد</span>
+          </div>
+        </p-header>
+        <ng-template pTemplate="content">
+          <div class="side-menu-item-content" routerLinkActive="active-link" [routerLinkActiveOptions]="{excat:true}">
+            <a (click)="closeSideMenu()">Nf2a</a>
+            <a (click)="closeSideMenu()">Mgany</a>
+          </div>
+        </ng-template>
+      </p-accordionTab>
+    </p-accordion>
+  </p-scrollPanel>
+
+</p-sidebar> -->

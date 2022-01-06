@@ -1,4 +1,4 @@
-import { IProduct } from './../_models/IProduct';
+import { IProduct } from 'src/app/_models/IProduct';
 import { IProductDTO } from './../Dtos/IProductDTO';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -14,11 +14,13 @@ export class ProductService {
   addNewProduct(productDTO: IProductDTO) {
     return this.http.post(this.apiUrl, productDTO);
   }
-  getProducts(pageSize, pageIndex) {
+  getPaignatedProducts(pageSize, pageIndex) {
     let params = new HttpParams();
     params = params.append('pageNumber', pageIndex);
     params = params.append('pageSize', pageSize);
-    return this.http.get<IProductDTO[]>(this.apiUrl, { params });
+    return this.http.get<IProductDTO[]>(`${this.apiUrl}/paginated-products`, {
+      params,
+    });
   }
   getProduct(productId: Number) {
     return this.http.get<IProduct>(`${this.apiUrl}/${productId}`);
@@ -28,5 +30,8 @@ export class ProductService {
   }
   updateProduct(updatedProduct: IProduct) {
     return this.http.put(this.apiUrl, updatedProduct);
+  }
+  getProductsWithUnitName() {
+    return this.http.get<IProduct[]>(`${this.apiUrl}/products-with-unit`);
   }
 }

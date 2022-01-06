@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MedicineService } from 'src/app/_services/medicine.service.service';
+// import { MedicineService } from 'src/app/_services/medicine.service.service';
 
 @Component({
   selector: 'app-medicine-file-upload',
@@ -12,7 +12,7 @@ export class MedicineFileUploadComponent implements OnInit {
   medicinesFromServer:any;
 
   constructor(
-    private medicineService: MedicineService,
+    // private medicineService: MedicineService,
     private router: Router
   ) {}
 
@@ -25,28 +25,28 @@ export class MedicineFileUploadComponent implements OnInit {
     const formData = new FormData();
     formData.append('form', this.fileToUpload);
 
-    if (this.fileToUpload) {
-      this.medicineService.uploadFile(formData).subscribe(
-        (res) => {
-          console.log(res);
-          this.medicinesFromServer = res;
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
-    }
+    // if (this.fileToUpload) {
+    //   this.medicineService.uploadFile(formData).subscribe(
+    //     (res) => {
+    //       console.log(res);
+    //       this.medicinesFromServer = res;
+    //     },
+    //     (err) => {
+    //       console.log(err);
+    //     }
+    //   );
+    // }
   }
 
   saveUploadedMedicinesToDb() {
-    this.medicineService.addUploadedMedicinestoDb(this.medicinesFromServer).subscribe(
-      (res) => {
-        console.log(res);
-        this.router.navigate(['/medicines']);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    // this.medicineService.addUploadedMedicinestoDb(this.medicinesFromServer).subscribe(
+    //   (res) => {
+    //     console.log(res);
+    //     this.router.navigate(['/medicines']);
+    //   },
+    //   (err) => {
+    //     console.log(err);
+    //   }
+    // );
   }
 }

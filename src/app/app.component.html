@@ -1,4 +1,7 @@
-<app-navbar></app-navbar>
+<ng-container *ngIf="isAuthenticated">
+  <app-navbar></app-navbar>
+</ng-container>
+
 <div style="margin-top: 67px">
   <router-outlet></router-outlet>
   <p-toast position="top-center"></p-toast>

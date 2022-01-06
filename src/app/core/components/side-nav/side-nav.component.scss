@@ -1,0 +1,112 @@
+// @media only screen and (max-width: 1050px) {
+//   :host ::ng-deep .p-sidebar .p-sidebar-right .p-sidebar-content {
+//     margin-left: 75px;
+//   }
+// }
+// :host ::ng-deep .p-sidebar {
+//   position: fixed;
+//   top: 0;
+//   height: 100%;
+//   background-color: rebeccapurple;
+//   display: flex;
+//   flex-direction: column;
+//   padding: 0 12px;
+//   z-index: 1000000 !important;
+// }
+// .p-sidebar-content {
+//   height: 100%;
+// }
+
+// @mixin button {
+//   border-radius: 12px;
+//   border: 1px solid rgba(255, 255, 255, 0.1);
+//   height: 56px;
+//   background-color: blue;
+// }
+// @mixin hover {
+//   background-color: cadetblue;
+//   border-color: rgba(255, 255, 255, 0.1);
+// }
+// .logo {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 2 * 12 0;
+// }
+// .user-section {
+//   display: flex;
+//   flex-direction: row;
+//   padding: 2 * 12 0 12 0;
+
+//   .menu-button {
+//     @include button();
+//     padding: 0 10px;
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     flex-grow: 1;
+//   }
+//   &:hover {
+//     @include hover();
+//   }
+//   .avatar {
+//     flex-grow: 0;
+//     flex-basis: 0;
+//   // }
+//   span {
+//     flex-grow: 1;
+//     flex-basis: 0;
+//     text-align: initial;
+//     padding: 0px 10px;
+//     color: #fff;
+//     &.p-button-iconP {
+//       text-align: end;
+//     }
+//     &.p-button-label {
+//       display: none;
+//     }
+//   }
+// }
+
+// :host ::ng-deep .closed .p-sidebar {
+//   width: 75px;
+//   padding-left: 0;
+// }
+// .bla {
+//   right: 280px;
+// }
+// .bla2 {
+//   right: 50px;
+// }
+
+// .navigation-items {
+//   list-style: none;
+//   margin: 0;
+//   padding: 0;
+//   width: 330-50;
+//   overflow-x: hidden;
+//   .navigation-item {
+//     padding-top: 8px;
+//     a {
+//       display: flex;
+//       text-decoration: none;
+//       color: #fff;
+//       span {
+//         padding: 12px 0px 12px 12px;
+//         font-size: 1rem;
+//         font-weight: 500;
+//       }
+//     }
+//   }
+// }
+// .toggle {
+//   position: absolute;
+//   left: calc(100%+10px);
+//   top: 2.2rem;
+//   background-color: rgb(122, 33, 33);
+//   border-radius: 0px 10px 10px 0px;
+//   cursor: pointer;
+//   height: 28;
+//   width: 22px;
+// }

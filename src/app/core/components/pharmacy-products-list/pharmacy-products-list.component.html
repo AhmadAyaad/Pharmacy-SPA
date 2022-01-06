@@ -1,0 +1,49 @@
+<p-panel header="المنتجات" [styleClass]="'p-4'">
+    <div class="flex-end mb-3">
+        <button pButton class="p-button p-button-icon" type="button" icon="fas fa-plus-circle" label="إضافة منتج"
+            iconPos="left"></button>
+    </div>
+    <p-table #table [value]="pharmacyProducts" [showCurrentPageReport]="true" [currentPageReportTemplate]="pageReport"
+        [paginator]="true" [rows]="10" [totalRecords]="totalProductsCount" [rowsPerPageOptions]="rowsPerPageOptions"
+        styleClass="p-datatable-gridlines" [lazy]="true" (onLazyLoad)="loadPharmacyProductsLazy($event)">
+        <ng-template pTemplate="header">
+            <tr>
+                <th *ngFor="let col of columns" [style.width]="col.width" [ngSwitch]="col.field"
+                    [ngClass]="{ 'text-truncate':col.field !== 'actionButtons' ,'text-center': col.field === 'actionButtons' }">
+                    <ng-container *ngSwitchDefault>
+                        {{ col.header }}
+                    </ng-container>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+            <tr [pSelectableRow]="rowData" [pSelectableRowIndex]="rowIndex" class="table-row">
+                <td *ngFor="let col of columns"
+                    [ngClass]="{'text-truncate': col.field !== 'actionButtons' , 'text-center':col.field ==='actionButtons' }"
+                    [ngSwitch]="col.field" [pTooltip]="rowData[col.field]" tooltipPosition="top">
+                    <ng-container *ngSwitchCase="'actionButtons'">
+                        <div>
+                            <button (click)="openPharmacyProductDetails(rowData)">Details</button>
+                            <button (click)="onDeleteProduct(rowData)" pButton pTooltip="مسح" tooltipPosition="top"
+                                icon="fas fa-trash" class="mr-4 delete-btn-bg">
+                            </button>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngSwitchDefault>
+                        {{ rowData[col.field] }}
+                    </ng-container>
+
+                </td>
+            </tr>
+
+        </ng-template>
+        <ng-template pTemplate="emptymessage" let-columns>
+            <div [attr.colspan]="columns?.length" class="empty-message not-found-grid">
+                لايوجد منتحات.
+            </div>
+        </ng-template>
+    </p-table>
+</p-panel>
+
+<p-confirmDialog header="تأكيد" acceptLabel="نعم" acceptIcon="pi pi-check" rejectIcon="pi pi-times" rejectLabel="لا"
+    defaultFocus="لا" icon="pi pi-exclamation-triangle"></p-confirmDialog>

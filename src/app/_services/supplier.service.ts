@@ -30,4 +30,7 @@ export class SupplierService {
   deleteSupplier(supplierId: Number) {
     return this.http.delete(`${this.apiUrl}/${supplierId}`);
   }
+  getSuppliers() {
+    return this.http.get<ISupplier[]>(this.apiUrl);
+  }
 }

@@ -1,0 +1,48 @@
+<div class="p-4" style="background-color: #f2f2f2;width: 63%;border-radius: 12px;margin: 0 auto;">
+    <p-panel header="تفاصيل المنتج">
+        <div class="font-weight-bold">
+            <label>إسم المنتج</label>
+            <span>{{pharmacyProductDetails?.name}} </span>
+        </div>
+        <div class="font-weight-bold">
+            <label class="font-weight-bold">الكود المحلى</label>
+            <span>{{pharmacyProductDetails?.localCode}} </span>
+        </div>
+
+        <div class="font-weight-bold">
+            <label class="font-weight-bold">الوحدة</label>
+            <span>{{pharmacyProductDetails?.unitName}} </span>
+        </div>
+
+        <div class="font-weight-bold">
+            <label class="font-weight-bold">نوع المنتج</label>
+            <span>{{pharmacyProductDetails?.productType}} </span>
+        </div>
+
+        <div class="font-weight-bold">
+            <label class="font-weight-bold">الكود الدولى</label>
+            <span>{{pharmacyProductDetails?.nationalCode}} </span>
+        </div>
+        <div class="font-weight-bold">
+            <label class="font-weight-bold">الكمية الكلية</label>
+            <span>{{pharmacyProductDetails?.totalQuantity}} </span>
+        </div>
+
+        <div>
+            <table>
+                <tr>
+                    <td>السعر</td>
+                    <td>الكيمة</td>
+                    <td>تاريخ الإنتهاء</td>
+                </tr>
+                <tr
+                    *ngFor="let productQuantityDetailViewModel of pharmacyProductDetails?.productQuantityDetailViewModels">
+                    <td>{{ productQuantityDetailViewModel?.price}}</td>
+                    <td>{{productQuantityDetailViewModel?.quantity}}</td>
+                    <td>{{formatExpireDate(productQuantityDetailViewModel?.expireDate)}}</td>
+                </tr>
+            </table>
+        </div>
+
+    </p-panel>
+</div>

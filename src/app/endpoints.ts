@@ -1,3 +1,3 @@
 export const pharamcyProductsEndpoint = `pharmacyProducts`;
-export const largePharmaciesEndpoint = `largePharmacies`;
+export const largePharmaciesEndpoint = `large-pharmacies`;
 export const pharmacyProductDetails = `pharmacy/products`;
